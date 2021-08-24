@@ -26,4 +26,7 @@
 # UNSOLVED PROBLEMS
 
 # WIREFRAMES
-
+<a href="https://imgur.com/Yir4BFA"><img src="https://i.imgur.com/Yir4BFA.jpg" title="source: imgur.com" /></a>
+<a href="https://imgur.com/lY0lGMb"><img src="https://i.imgur.com/lY0lGMb.jpg" title="source: imgur.com" /></a>
+<a href="https://imgur.com/Na4A8s5"><img src="https://i.imgur.com/Na4A8s5.jpg" title="source: imgur.com" /></a>
+<a href="https://imgur.com/89C7oXK"><img src="https://i.imgur.com/89C7oXK.jpg" title="source: imgur.com" /></a>
