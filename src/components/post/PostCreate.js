@@ -45,7 +45,7 @@ class CreatePost extends Component {
                 .catch((error) => {
                   this.setState({ title: '', subject: '', content: '', image: '' })
                   msgAlert({
-                    heading: 'Change Password Failed with error: ' + error.message,
+                    heading: 'Failed with error: ' + error.message,
                     // message: createPostFailure,
                     variant: 'danger'
                   })

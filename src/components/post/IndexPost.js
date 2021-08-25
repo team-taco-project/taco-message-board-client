@@ -1,7 +1,8 @@
 import React from 'react'
-// import { Link } from 'react-router-dom'
+import { withRouter, Link } from 'react-router-dom'
 import { indexAllPosts } from '../../api/post'
 import Card from 'react-bootstrap/Card'
+// import Button from 'react-bootstrap/Button'
 
 class IndexAllPosts extends React.Component {
   constructor (props) {
@@ -41,24 +42,29 @@ class IndexAllPosts extends React.Component {
   render () {
     // if statement handles the issue when state is null
     // cannot handle initial render with null.
+    const { match } = this.props
     if (this.state.post === null) {
       return 'loading...'
     }
     let postJsx
     if (this.posts === null) {
-      ;<h3>No post</h3>
+      <h3>No post</h3>
     } else {
+      console.log('match params _id', match.params._id)
       postJsx = this.state.post.map((post) => (
         <li key={post._id}>
           <Card style={{ width: '100%' }}>
             <Card.Body>
-              <Card.Title>{post.title}</Card.Title>
+              <Card.Link href={`/post/${post._id}`}>
+                <Card.Title>{post.title}</Card.Title>
+              </Card.Link>
               <Card.Subtitle className="mb-2 text-muted">{post.subject}</Card.Subtitle>
               <Card.Text>
                 {post.content}
               </Card.Text>
-              <Card.Link href="#">update</Card.Link>
+              <Link to={`/post/${post._id}/edit`}>update</Link>
               <Card.Link href="#">delete</Card.Link>
+              <Card.Link href="#">comments</Card.Link>
             </Card.Body>
           </Card>
         </li>
@@ -74,4 +80,4 @@ class IndexAllPosts extends React.Component {
   }
 }
 
-export default IndexAllPosts
+export default withRouter(IndexAllPosts)

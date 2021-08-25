@@ -12,6 +12,9 @@ import SignOut from './components/auth/SignOut'
 import ChangePassword from './components/auth/ChangePassword'
 import PostCreate from './components/post/PostCreate'
 import IndexAllPosts from './components/post/IndexPost'
+// import ShowPost from './components/post/ShowPost'
+import UpdatePost from './components/post/UpdatePost'
+
 class App extends Component {
   constructor (props) {
     super(props)
@@ -58,6 +61,7 @@ class App extends Component {
           />
         ))}
         <main className='container'>
+          {/* unauthenticated routes */}
           <Route
             path='/sign-up'
             render={() => (
@@ -70,6 +74,15 @@ class App extends Component {
               <SignIn msgAlert={this.msgAlert} setUser={this.setUser} />
             )}
           />
+          <Route
+            path='/posts-all'
+            render={() => <IndexAllPosts msgAlert={this.msgAlert} user={user} />}
+          />
+          {/* <Route
+            path='/post/:id'
+            render={() => <ShowPost msgAlert={this.msgAlert}/>}
+          /> */}
+          {/* authenticated routes */}
           <AuthenticatedRoute
             user={user}
             path='/sign-out'
@@ -93,9 +106,10 @@ class App extends Component {
             path='/create-post'
             render={() => <PostCreate msgAlert={this.msgAlert} user={user} />}
           />
-          <Route
-            path='/posts-all'
-            render={() => <IndexAllPosts msgAlert={this.msgAlert} user={user} />}
+          <AuthenticatedRoute
+            user={user}
+            path='/post/:id/edit'
+            render={() => <UpdatePost msgAlert={this.msgAlert} user={user} />}
           />
         </main>
       </Fragment>
