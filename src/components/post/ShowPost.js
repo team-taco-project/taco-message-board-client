@@ -1,57 +1,57 @@
 import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom'
+// API request
 import { showPost } from '../../api/post'
+import Button from 'react-bootstrap/Button'
 import Card from 'react-bootstrap/Card'
 
-class ShowPost extends Component {
-  // constructor for show post
+class UpdatePost extends Component {
   constructor (props) {
     super(props)
+
     this.state = {
-      post: null
+      // using null as a starting value will help us manage the "loading state" of our UpdateMovie component
+      post: { // this should not be null
+        title: '', // must provide starting values for the form inputs
+        subject: '',
+        content: '',
+        image: ''
+      }
     }
   }
 
   componentDidMount () {
-    // destructuring props
-    const { match, msgAlert } = this.props
-    // gets single post
-    showPost(match.params.id)
-      .then(res => this.setState({
-        post: res.data.post
-      }))
-      // success message
+    // one of the automatic router props we get is the match object - that has data about the params in our front-end route url
+    const { match, user, msgAlert } = this.props
+
+    showPost(match.params.id, user)
+      .then(res => this.setState({ post: res.data.post }))
       .then(() => msgAlert({
         heading: 'Show post success',
-        message: 'Checkout post',
+        message: 'Check out the post',
         variant: 'success'
       }))
-      // failure message
-      .catch(() => msgAlert({
-        heading: 'Show post fail',
-        message: 'Fail',
+      .catch(err => msgAlert({
+        heading: 'Show post failed :(',
+        message: 'Something went wrong: ' + err.message,
         variant: 'danger'
       }))
   }
 
   render () {
-    if (this.state.post === null) {
-      return 'Loading...'
-    }
-    const { title, subject, content } = this.state.post
+    const { title, subject, content, image } = this.state.post
     return (
       <>
-        <h3>Show Post</h3>
         <Card style={{ width: '100%' }}>
           <Card.Body>
             <Card.Title>{title}</Card.Title>
             <Card.Subtitle className="mb-2 text-muted">{subject}</Card.Subtitle>
-            <Card.Text>
-              {content}
-            </Card.Text>
-            <Card.Link href="#">update</Card.Link>
+            <Card.Text>{content}</Card.Text>
+            <Card.Text>{image}</Card.Text>
+            <Button onClick={this.handleDeletePost}>Delete</Button>
+            {/* <Link to={`/post/${post._id}/edit`}>update</Link>
             <Card.Link href="#">delete</Card.Link>
-            <Card.Link href="#">comments</Card.Link>
+            <Card.Link href="#">comments</Card.Link> */}
           </Card.Body>
         </Card>
       </>
@@ -59,4 +59,4 @@ class ShowPost extends Component {
   }
 }
 
-export default withRouter(ShowPost)
+export default withRouter(UpdatePost)
