@@ -4,20 +4,18 @@ import { withRouter } from 'react-router-dom'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 
-import { createPost } from '../../api/post'
+import { createComment } from '../../api/comment'
 // import {
 //   createPostSuccess,
 //   createPostFailure
 // } from '../AutoDismissAlert/messages'
 
-class CreatePost extends Component {
+class CreateComment extends Component {
   constructor (props) {
     super(props)
 
     this.state = {
-      title: '',
-      subject: '',
-      content: '',
+      text: '',
       image: ''
     }
   }
@@ -27,68 +25,46 @@ class CreatePost extends Component {
                 [event.target.name]: event.target.value
               })
 
-            onCreatePost = (event) => {
+            onCreateComment = (event) => {
               event.preventDefault()
 
-              const { msgAlert, history, user } = this.props
+              const { msgAlert, history, user, match } = this.props
 
-              createPost(this.state, user)
-                .then((res) => history.push('/posts'))
+              createComment(this.state, user, match.params.id)
+                .then((res) => history.push('/post/' + match.params.id))
                 .then(() =>
                   msgAlert({
-                    heading: 'Post Created',
-                    // message: createPostSuccess,
+                    heading: 'Comment Created',
+                    // message: createCommentSuccess,
                     variant: 'success'
                   })
                 )
-                .then(() => history.push('/posts-all'))
                 .catch((error) => {
-                  this.setState({ title: '', subject: '', content: '', image: '' })
+                  this.setState({ text: '', image: '' })
                   msgAlert({
                     heading: 'Failed with error: ' + error.message,
-                    // message: createPostFailure,
+                    // message: createCommentFailure,
                     variant: 'danger'
                   })
+                  history.push('/post/' + match.params.id)
                 })
             }
 
             render () {
-              const { title, subject, content, image } = this.state
+              const { text, image } = this.state
               return (
                 <>
                   <div className='row'>
                     <div className='col-sm-10 col-md-8 mx-auto mt-5'>
-                      <h3>Create Post</h3>
-                      <Form onSubmit={this.onCreatePost}>
-                        <Form.Group controlId='title'>
-                          <Form.Label>Post Title</Form.Label>
+                      <h3>Create Comment</h3>
+                      <Form onSubmit={this.onCreateComment}>
+                        <Form.Group controlId='text'>
+                          <Form.Label>Comment Text</Form.Label>
                           <Form.Control
                             required
-                            name='title'
-                            value={title}
-                            placeholder='Post Title'
-                            onChange={this.handleChange}
-                          />
-                        </Form.Group>
-                        <Form.Group controlId='subject'>
-                          <Form.Label>Subject</Form.Label>
-                          <Form.Control
-                            required
-                            name='subject'
-                            value={subject}
-                            placeholder='subject'
-                            onChange={this.handleChange}
-                          />
-                        </Form.Group>
-                        <Form.Group controlId='content'>
-                          <Form.Label>content</Form.Label>
-                          <Form.Control
-                            required
-                            name='content'
-                            value={content}
-                            placeholder='content'
-                            as="textarea"
-                            rows={4}
+                            name='text'
+                            value={text}
+                            placeholder='Comment Title'
                             onChange={this.handleChange}
                           />
                         </Form.Group>
@@ -102,9 +78,11 @@ class CreatePost extends Component {
                             onChange={this.handleChange}
                           />
                         </Form.Group>
+
                         <Button variant='primary' type='submit'>
                                 Submit
                         </Button>
+
                       </Form>
                     </div>
                   </div>
@@ -113,4 +91,4 @@ class CreatePost extends Component {
             }
 }
 
-export default withRouter(CreatePost)
+export default withRouter(CreateComment)
