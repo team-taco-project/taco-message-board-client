@@ -1,16 +1,16 @@
 import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom'
 // API request
-import { showPost } from '../../api/post'
+import { showPost, deletePost } from '../../api/post'
 import Button from 'react-bootstrap/Button'
 import Card from 'react-bootstrap/Card'
 
-class UpdatePost extends Component {
+class ShowPost extends Component {
   constructor (props) {
     super(props)
 
     this.state = {
-      // using null as a starting value will help us manage the "loading state" of our UpdateMovie component
+      // using null as a starting value will help us manage the "loading state" of our ShowMovie component
       post: { // this should not be null
         title: '', // must provide starting values for the form inputs
         subject: '',
@@ -38,6 +38,15 @@ class UpdatePost extends Component {
       }))
   }
 
+  handleDeletePost = (event) => {
+    const { match, user, msgAlert, history } = this.props
+    deletePost(match.params.id, user)
+      // Redirect to the list of posts
+      .then(() => history.push('/posts-all'))
+      .then(() => msgAlert({ heading: 'Delete post successfully', message: 'post is no more', variant: 'success' }))
+      .catch(err => msgAlert({ heading: 'Delete post failed :(', message: 'Something went wrong: ' + err.message, variant: 'danger' }))
+  }
+
   render () {
     const { title, subject, content, image } = this.state.post
     return (
@@ -59,4 +68,4 @@ class UpdatePost extends Component {
   }
 }
 
-export default withRouter(UpdatePost)
+export default withRouter(ShowPost)

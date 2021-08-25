@@ -110,7 +110,7 @@ class App extends Component {
           />
           <AuthenticatedRoute
             user={user}
-            path='/post/:id'
+            exact path='/post/:id'
             render={() => <ShowPost msgAlert={this.msgAlert} user={user}/>}
           />
         </main>

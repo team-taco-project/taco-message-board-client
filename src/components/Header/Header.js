@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react'
 import Nav from 'react-bootstrap/Nav'
 import Navbar from 'react-bootstrap/Navbar'
-import { Link, NavLink } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 
 const authenticatedOptions = (
   <Fragment>
@@ -26,7 +26,7 @@ const unauthenticatedOptions = (
 
 const alwaysOptions = (
   <Fragment>
-    <NavLink exact to='/' className='nav-link'>Home</NavLink>
+    <NavLink exact to='/posts-all' className='nav-link'>Home</NavLink>
   </Fragment>
 )
 
@@ -39,9 +39,6 @@ const Header = ({ user }) => (
           <span className='navbar-text mr-2'>Welcome, {user.email}</span>
         )}
         {alwaysOptions}
-        <Navbar.Brand>
-          <Link to='/' style={{ color: '#FFF', textDecoration: 'none' }}>Taco Message Board</Link>
-        </Navbar.Brand>
         {user ? authenticatedOptions : unauthenticatedOptions}
       </Nav>
     </Navbar.Collapse>
