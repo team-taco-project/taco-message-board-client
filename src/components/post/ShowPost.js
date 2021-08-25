@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { withRouter } from 'react-router-dom'
+import { withRouter, Link } from 'react-router-dom'
 // API request
 import { showPost, deletePost } from '../../api/post'
 import Button from 'react-bootstrap/Button'
@@ -15,7 +15,8 @@ class ShowPost extends Component {
         title: '', // must provide starting values for the form inputs
         subject: '',
         content: '',
-        image: ''
+        image: '',
+        comments: []
       }
     }
   }
@@ -48,7 +49,8 @@ class ShowPost extends Component {
   }
 
   render () {
-    const { title, subject, content, image } = this.state.post
+    const { title, subject, content, image, comments, _id } = this.state.post
+    console.log(comments)
     return (
       <>
         <Card style={{ width: '100%' }}>
@@ -57,11 +59,18 @@ class ShowPost extends Component {
             <Card.Subtitle className="mb-2 text-muted">{subject}</Card.Subtitle>
             <Card.Text>{content}</Card.Text>
             <Card.Text>{image}</Card.Text>
+            <Card.Text>comment{comments.map(comment => comment.text)}</Card.Text>
             <Button onClick={this.handleDeletePost}>Delete</Button>
-            {/* <Link to={`/post/${post._id}/edit`}>update</Link>
-            <Card.Link href="#">delete</Card.Link>
+            <Link to={`/post/${_id}/comments`}>update</Link>
+            {/* <Card.Link href="#">delete</Card.Link>
             <Card.Link href="#">comments</Card.Link> */}
           </Card.Body>
+
+          {/* <ul>
+            { post.comments.map((comment: { comments, _id }) =>
+              <li key={_id}>`${comments}`</li>
+            ) }
+          </ul> */}
         </Card>
       </>
     )

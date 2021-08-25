@@ -50,7 +50,6 @@ class IndexAllPosts extends React.Component {
     if (this.posts === null) {
       <h3>No post</h3>
     } else {
-      console.log(this.state.post.comments)
       postJsx = this.state.post.map((post) => (
         <li key={post._id}>
           <Card style={{ width: '100%' }}>
@@ -68,11 +67,6 @@ class IndexAllPosts extends React.Component {
             </Card.Body>
 
           </Card>
-          <ul>
-            { post.comments.map((comment) =>
-              <li key={comment._id}>{this.data.comments}</li>
-            ) }
-          </ul>
         </li>
       ))
     }
