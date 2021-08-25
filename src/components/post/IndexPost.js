@@ -55,9 +55,9 @@ class IndexAllPosts extends React.Component {
         <li key={post._id}>
           <Card style={{ width: '100%' }}>
             <Card.Body>
-              <Card.Link href={`/post/${post._id}`}>
+              <Link to={`/post/${post._id}`}>
                 <Card.Title>{post.title}</Card.Title>
-              </Card.Link>
+              </Link>
               <Card.Subtitle className="mb-2 text-muted">{post.subject}</Card.Subtitle>
               <Card.Text>
                 {post.content}
