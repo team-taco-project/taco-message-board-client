@@ -10,7 +10,8 @@ import SignUp from './components/auth/SignUp'
 import SignIn from './components/auth/SignIn'
 import SignOut from './components/auth/SignOut'
 import ChangePassword from './components/auth/ChangePassword'
-
+import PostCreate from './components/post/PostCreate'
+import IndexAllPosts from './components/post/IndexPost'
 class App extends Component {
   constructor (props) {
     super(props)
@@ -44,8 +45,9 @@ class App extends Component {
 
     return (
       <Fragment>
-	      <Header user={user} />
-	      {msgAlerts.map((msgAlert) => (
+        <p>title</p>
+        <Header user={user} />
+        {msgAlerts.map((msgAlert) => (
           <AutoDismissAlert
             key={msgAlert.id}
             heading={msgAlert.heading}
@@ -55,8 +57,8 @@ class App extends Component {
             deleteAlert={this.deleteAlert}
           />
         ))}
-	      <main className='container'>
-	        <Route
+        <main className='container'>
+          <Route
             path='/sign-up'
             render={() => (
               <SignUp msgAlert={this.msgAlert} setUser={this.setUser} />
@@ -85,6 +87,15 @@ class App extends Component {
             render={() => (
               <ChangePassword msgAlert={this.msgAlert} user={user} />
             )}
+          />
+          <AuthenticatedRoute
+            user={user}
+            path='/create-post'
+            render={() => <PostCreate msgAlert={this.msgAlert} user={user} />}
+          />
+          <Route
+            path='/posts-all'
+            render={() => <IndexAllPosts msgAlert={this.msgAlert} user={user} />}
           />
         </main>
       </Fragment>

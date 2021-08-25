@@ -12,8 +12,8 @@ class SignIn extends Component {
     super(props)
 
     this.state = {
-      email: '',
-      password: ''
+      email: 'a@aa.com',
+      password: '456'
     }
   }
 
@@ -36,7 +36,7 @@ onSignIn = (event) => {
         variant: 'success'
       })
     )
-    .then(() => history.push('/'))
+    .then(() => history.push('/posts-all'))
     .catch((error) => {
       this.setState({ email: '', password: '' })
       msgAlert({
