@@ -61,7 +61,7 @@ class App extends Component {
           />
         ))}
         <main className='container'>
-          {/* unauthenticated routes */}
+          {/* unauthenticated post routes */}
           <Route
             path='/sign-up'
             render={() => (
@@ -79,7 +79,7 @@ class App extends Component {
             render={() => <IndexAllPosts msgAlert={this.msgAlert} user={user} />}
           />
 
-          {/* authenticated routes */}
+          {/* authenticated post routes */}
           <AuthenticatedRoute
             user={user}
             path='/sign-out'
@@ -111,6 +111,12 @@ class App extends Component {
           <AuthenticatedRoute
             user={user}
             exact path='/post/:id'
+            render={() => <ShowPost msgAlert={this.msgAlert} user={user}/>}
+          />
+          {/* authenticated comments routes */}
+          <AuthenticatedRoute
+            user={user}
+            exact path='/post/:id/comments'
             render={() => <ShowPost msgAlert={this.msgAlert} user={user}/>}
           />
         </main>
