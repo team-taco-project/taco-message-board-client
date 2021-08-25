@@ -41,7 +41,7 @@ class CreatePost extends Component {
                     variant: 'success'
                   })
                 )
-                .then(() => history.push('/posts'))
+                .then(() => history.push('/posts-all'))
                 .catch((error) => {
                   this.setState({ title: '', subject: '', content: '', image: '' })
                   msgAlert({

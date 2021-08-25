@@ -1,6 +1,7 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+// import { Link } from 'react-router-dom'
 import { indexAllPosts } from '../../api/post'
+import Card from 'react-bootstrap/Card'
 
 class IndexAllPosts extends React.Component {
   constructor (props) {
@@ -49,7 +50,17 @@ class IndexAllPosts extends React.Component {
     } else {
       postJsx = this.state.post.map((post) => (
         <li key={post._id}>
-          <Link to={`/post/${post._id}`}>{post.title}</Link>
+          <Card style={{ width: '100%' }}>
+            <Card.Body>
+              <Card.Title>{post.title}</Card.Title>
+              <Card.Subtitle className="mb-2 text-muted">{post.subject}</Card.Subtitle>
+              <Card.Text>
+                {post.content}
+              </Card.Text>
+              <Card.Link href="#">update</Card.Link>
+              <Card.Link href="#">delete</Card.Link>
+            </Card.Body>
+          </Card>
         </li>
       ))
     }
