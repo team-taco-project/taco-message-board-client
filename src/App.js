@@ -12,7 +12,7 @@ import SignOut from './components/auth/SignOut'
 import ChangePassword from './components/auth/ChangePassword'
 import PostCreate from './components/post/PostCreate'
 import IndexAllPosts from './components/post/IndexPost'
-// import ShowPost from './components/post/ShowPost'
+import ShowPost from './components/post/ShowPost'
 import UpdatePost from './components/post/UpdatePost'
 
 class App extends Component {
@@ -78,10 +78,7 @@ class App extends Component {
             path='/posts-all'
             render={() => <IndexAllPosts msgAlert={this.msgAlert} user={user} />}
           />
-          {/* <Route
-            path='/post/:id'
-            render={() => <ShowPost msgAlert={this.msgAlert}/>}
-          /> */}
+
           {/* authenticated routes */}
           <AuthenticatedRoute
             user={user}
@@ -110,6 +107,11 @@ class App extends Component {
             user={user}
             path='/post/:id/edit'
             render={() => <UpdatePost msgAlert={this.msgAlert} user={user} />}
+          />
+          <AuthenticatedRoute
+            user={user}
+            path='/post/:id'
+            render={() => <ShowPost msgAlert={this.msgAlert} user={user}/>}
           />
         </main>
       </Fragment>
