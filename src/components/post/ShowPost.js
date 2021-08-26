@@ -81,13 +81,13 @@ class ShowPost extends Component {
 
     handleDeleteComment = (_id) => {
       console.log('id', _id)
-      const { user, msgAlert, history } = this.props
-      deleteComment(_id, user)
+      const { match, user, msgAlert, history } = this.props
+      deleteComment(match.params.id, _id, user)
       // Redirect to the list of posts
         .then(() => history.push('/post/:id'))
         .then(() =>
           msgAlert({
-            heading: 'Delete post successfully',
+            heading: 'Delete comment successfully',
             message: 'post is no more',
             variant: 'success'
           })
@@ -105,13 +105,6 @@ class ShowPost extends Component {
       const { title, subject, content, image, comments, _id } = this.state.post
       return (
         <>
-          {/* <Card style={{ width: '100%' }}>
-            <Card.Body>
-              <Card.Title>{title}</Card.Title>
-              <Card.Subtitle className="mb-2 text-muted">{subject}</Card.Subtitle>
-              <Card.Text>{content}</Card.Text>
-              <Card.Text>{image}</Card.Text>
-              <Card.Text>comment{comments.map(comment => comment.text)}</Card.Text> */}
           {/* bringing in the component Post that is accepting passed down data as props */}
           <Post
             title={title}

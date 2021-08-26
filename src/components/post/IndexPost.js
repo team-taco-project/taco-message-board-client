@@ -62,8 +62,6 @@ class IndexAllPosts extends React.Component {
               </Card.Subtitle>
               <Card.Text>{post.content}</Card.Text>
               <Link to={`/post/${post._id}/edit`}>update</Link>
-              <Card.Link href='#'>delete</Card.Link>
-              <Link to={`/post/${post._id}/comments`}>Make a Comment</Link>
             </Card.Body>
 
           </Card>

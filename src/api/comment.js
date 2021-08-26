@@ -1,9 +1,7 @@
 import apiUrl from '../apiConfig'
 import axios from 'axios'
 
-// Create Post Request
-// assume that `data` is an object with `title` and `director`
-// { title: 'something', director: 'someone' }
+// Create comment Request
 export const createComment = (data, user, id) => {
   // data.postId = id
   return axios({
@@ -15,28 +13,6 @@ export const createComment = (data, user, id) => {
     }
   })
 }
-
-// // Index request
-// // no data, we will need a token
-// export const indexPosts = (user) => {
-//   return axios({
-//     // method key sets the HTTP verb/method for this request
-//     // GET is the default method, so we can include or not up to us
-//     method: 'GET',
-//     url: apiUrl + '/posts',
-//     headers: {
-//       Authorization: `Bearer ${user.token}`
-//     }
-//   })
-// }
-// export const indexAllPosts = (user) => {
-//   return axios({
-//     // method key sets the HTTP verb/method for this request
-//     // GET is the default method, so we can include or not up to us
-//     method: 'GET',
-//     url: apiUrl + '/posts-all'
-//   })
-// }
 
 // GET /Posts/:id
 export const showComment = (id, user) => {
@@ -50,18 +26,11 @@ export const showComment = (id, user) => {
   })
 }
 
-// // GET /Post no id
-// // export const showPost = (id) => {
-// //   return axios({
-// //     url: apiUrl + '/post/' + id
-// //   })
-// // }
-
 // DELETE /Posts/:id
-export const deleteComment = (id, user) => {
-  console.log(id)
+export const deleteComment = (postId, commentId, user) => {
+  console.log(postId, commentId)
   return axios({
-    url: apiUrl + '/post/' + id,
+    url: apiUrl + '/post/' + postId + '/' + commentId,
     method: 'DELETE',
     headers: {
       Authorization: `Bearer ${user.token}`
