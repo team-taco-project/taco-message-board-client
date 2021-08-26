@@ -1,11 +1,9 @@
 import React, { Component } from 'react'
-import { withRouter, Link } from 'react-router-dom'
+import { withRouter } from 'react-router-dom'
 // API request
 import { showPost, deletePost } from '../../api/post'
 import Button from 'react-bootstrap/Button'
-// import Card from 'react-bootstrap/Card'
-// component imports
-import Post from '../smallerComponents/Post'
+import Card from 'react-bootstrap/Card'
 
 class ShowPost extends Component {
   constructor (props) {
@@ -17,8 +15,7 @@ class ShowPost extends Component {
         title: '', // must provide starting values for the form inputs
         subject: '',
         content: '',
-        image: '',
-        comments: []
+        image: ''
       }
     }
   }
@@ -51,31 +48,21 @@ class ShowPost extends Component {
   }
 
   render () {
-    const { title, subject, content, image, comments, _id } = this.state.post
-    // const { _id } = this.state.post
+    const { title, subject, content, image } = this.state.post
     return (
       <>
-        {/* <Card style={{ width: '100%' }}>
+        <Card style={{ width: '100%' }}>
           <Card.Body>
             <Card.Title>{title}</Card.Title>
             <Card.Subtitle className="mb-2 text-muted">{subject}</Card.Subtitle>
             <Card.Text>{content}</Card.Text>
             <Card.Text>{image}</Card.Text>
-            <Card.Text>comment{comments.map(comment => comment.text)}</Card.Text> */}
-        {/* bringing in the component Post that is accepting passed down data as props */}
-        <Post
-          title={title}
-          subject={subject}
-          content={content}
-          image={image}
-          comments={comments}
-        />
-        <Button onClick={this.handleDeletePost}>Delete</Button>
-        <Link to={`/post/${_id}/comments`}>Comment</Link>
-        {/* <Card.Link href="#">delete</Card.Link>
+            <Button onClick={this.handleDeletePost}>Delete</Button>
+            {/* <Link to={`/post/${post._id}/edit`}>update</Link>
+            <Card.Link href="#">delete</Card.Link>
             <Card.Link href="#">comments</Card.Link> */}
-        {/* </Card.Body>
-        </Card> */}
+          </Card.Body>
+        </Card>
       </>
     )
   }

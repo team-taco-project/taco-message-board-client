@@ -42,7 +42,7 @@ class IndexAllPosts extends React.Component {
   render () {
     // if statement handles the issue when state is null
     // cannot handle initial render with null.
-    // const { match } = this.props
+    const { match } = this.props
     if (this.state.post === null) {
       return 'loading...'
     }
@@ -50,6 +50,7 @@ class IndexAllPosts extends React.Component {
     if (this.posts === null) {
       <h3>No post</h3>
     } else {
+      console.log('match params _id', match.params._id)
       postJsx = this.state.post.map((post) => (
         <li key={post._id}>
           <Card style={{ width: '100%' }}>
@@ -57,15 +58,14 @@ class IndexAllPosts extends React.Component {
               <Link to={`/post/${post._id}`}>
                 <Card.Title>{post.title}</Card.Title>
               </Link>
-              <Card.Subtitle className='mb-2 text-muted'>
-                {post.subject}
-              </Card.Subtitle>
-              <Card.Text>{post.content}</Card.Text>
+              <Card.Subtitle className="mb-2 text-muted">{post.subject}</Card.Subtitle>
+              <Card.Text>
+                {post.content}
+              </Card.Text>
               <Link to={`/post/${post._id}/edit`}>update</Link>
-              <Card.Link href='#'>delete</Card.Link>
-              <Link to={`/post/${post._id}/comments`}>Make a Comment</Link>
+              <Card.Link href="#">delete</Card.Link>
+              <Card.Link href="#">comments</Card.Link>
             </Card.Body>
-
           </Card>
         </li>
       ))

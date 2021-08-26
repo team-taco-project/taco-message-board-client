@@ -14,6 +14,7 @@ import PostCreate from './components/post/PostCreate'
 import IndexAllPosts from './components/post/IndexPost'
 import ShowPost from './components/post/ShowPost'
 import UpdatePost from './components/post/UpdatePost'
+import CreateComment from './components/comment/CreateComment'
 
 class App extends Component {
   constructor (props) {
@@ -61,7 +62,7 @@ class App extends Component {
           />
         ))}
         <main className='container'>
-          {/* unauthenticated routes */}
+          {/* unauthenticated post routes */}
           <Route
             path='/sign-up'
             render={() => (
@@ -79,7 +80,7 @@ class App extends Component {
             render={() => <IndexAllPosts msgAlert={this.msgAlert} user={user} />}
           />
 
-          {/* authenticated routes */}
+          {/* authenticated post routes */}
           <AuthenticatedRoute
             user={user}
             path='/sign-out'
@@ -112,6 +113,12 @@ class App extends Component {
             user={user}
             exact path='/post/:id'
             render={() => <ShowPost msgAlert={this.msgAlert} user={user}/>}
+          />
+          {/* authenticated comments routes */}
+          <AuthenticatedRoute
+            user={user}
+            exact path='/post/:id/comments'
+            render={() => <CreateComment msgAlert={this.msgAlert} user={user}/>}
           />
         </main>
       </Fragment>
