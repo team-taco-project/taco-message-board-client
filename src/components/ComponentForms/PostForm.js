@@ -1,0 +1,34 @@
+import React, { Fragment } from 'react'
+import Card from 'react-bootstrap/Card'
+import Comment from './CommentForm'
+// creating a post component that is accepting the props it will be passed
+const Post = (props) => (
+  <Fragment>
+    <Card style={{ width: '100%' }}>
+      <Card.Body>
+        <Card.Title>{props.title}</Card.Title>
+        <Card.Subtitle className='mb-2 text-muted'>
+          {props.subject}
+        </Card.Subtitle>
+        <Card.Text>{props.content}</Card.Text>
+        <Card.Text>{props.image}</Card.Text>
+        {/* <Card.Text>{props.comments.map(comment => comment.text)}</Card.Text> */}
+        <Card.Text>
+          {props.comments.map(({ id, text, image, _id }) => (
+            <Comment
+              key={id}
+              text={text}
+              image={image}
+              _id={_id}
+              // here we are carrying through onClick from Post to be handed down to Comment
+              onClick={props.onClick}
+              onClickUpdate={props.onClickUpdate}
+            />
+          ))}
+        </Card.Text>
+      </Card.Body>
+    </Card>
+  </Fragment>
+)
+
+export default Post
