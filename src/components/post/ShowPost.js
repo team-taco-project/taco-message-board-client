@@ -6,7 +6,7 @@ import { deleteComment } from '../../api/comment'
 import Button from 'react-bootstrap/Button'
 // import Card from 'react-bootstrap/Card'
 // component imports
-import Post from '../smallerComponents/Post'
+import Post from '../ComponentForms/PostForm'
 
 class ShowPost extends Component {
   constructor (props) {
@@ -40,19 +40,22 @@ class ShowPost extends Component {
   componentDidMount () {
     // one of the automatic router props we get is the match object - that has data about the params in our front-end route url
     const { match, user, msgAlert } = this.props
-    console.log(this.state.post.comments)
     showPost(match.params.id, user)
-      .then(res => this.setState({ post: res.data.post }))
-      .then(() => msgAlert({
-        heading: 'Show post success',
-        message: 'Check out the post',
-        variant: 'success'
-      }))
-      .catch(err => msgAlert({
-        heading: 'Show post failed :(',
-        message: 'Something went wrong: ' + err.message,
-        variant: 'danger'
-      }))
+      .then((res) => this.setState({ post: res.data.post }))
+      .then(() =>
+        msgAlert({
+          heading: 'Show post success',
+          message: 'Check out the post',
+          variant: 'success'
+        })
+      )
+      .catch((err) =>
+        msgAlert({
+          heading: 'Show post failed :(',
+          message: 'Something went wrong: ' + err.message,
+          variant: 'danger'
+        })
+      )
   }
 
   handleDeletePost = (event) => {
@@ -76,9 +79,10 @@ class ShowPost extends Component {
       )
   }
 
-    handleDeleteComment = () => {
-      const { match, user, msgAlert, history } = this.props
-      deleteComment(match.params.id, user)
+    handleDeleteComment = (_id) => {
+      console.log('id', _id)
+      const { user, msgAlert, history } = this.props
+      deleteComment(_id, user)
       // Redirect to the list of posts
         .then(() => history.push('/post/:id'))
         .then(() =>
@@ -117,10 +121,10 @@ class ShowPost extends Component {
             comments={comments}
             // our function is passed in here as the onClick prop that will be sent to Post as props
             onClick={this.handleDeleteComment}
+            onClickUpdate={this.handleUpdateComment}
           />
           <Button onClick={this.handleDeletePost}>Delete</Button>
-          <Link to={`/post/${_id}/comments`}>Comment</Link>
-
+          <Link to={`/comments/${_id}`}>Comment</Link>
         </>
       )
     }

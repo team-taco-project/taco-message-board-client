@@ -7,7 +7,7 @@ import axios from 'axios'
 export const createComment = (data, user, id) => {
   // data.postId = id
   return axios({
-    url: apiUrl + '/comment/' + id,
+    url: apiUrl + '/post/' + id,
     method: 'POST',
     data: { comment: data },
     headers: {
@@ -38,16 +38,17 @@ export const createComment = (data, user, id) => {
 //   })
 // }
 
-// // // GET /Posts/:id
-// // export const showPost = (id, user) => {
-// //   return axios({
-// //     url: apiUrl + '/post/' + id,
-// //     // method is optional, default is GET
-// //     headers: {
-// //       Authorization: `Bearer ${user.token}`
-// //     }
-// //   })
-// // }
+// GET /Posts/:id
+export const showComment = (id, user) => {
+  console.log('inside showComment')
+  return axios({
+    url: apiUrl + '/comments/' + id,
+    // method is optional, default is GET
+    headers: {
+      Authorization: `Bearer ${user.token}`
+    }
+  })
+}
 
 // // GET /Post no id
 // // export const showPost = (id) => {
@@ -58,6 +59,7 @@ export const createComment = (data, user, id) => {
 
 // DELETE /Posts/:id
 export const deleteComment = (id, user) => {
+  console.log(id)
   return axios({
     url: apiUrl + '/post/' + id,
     method: 'DELETE',
@@ -68,9 +70,10 @@ export const deleteComment = (id, user) => {
 }
 
 // PATCH /Posts/:id
-export const updatePost = (data, id, user) => {
+export const updateComment = (data, id, user) => {
+  console.log('inside updateComment')
   return axios({
-    url: apiUrl + '/update-post/' + id,
+    url: apiUrl + '/update-comments/' + id,
     method: 'patch',
     data: { post: data },
     headers: {
