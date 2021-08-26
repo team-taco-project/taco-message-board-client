@@ -14,17 +14,17 @@ export const createComment = (data, user, id) => {
   })
 }
 
-// GET /Posts/:id
-export const showComment = (id, user) => {
-  console.log('inside showComment')
-  return axios({
-    url: apiUrl + '/comments/' + id,
-    // method is optional, default is GET
-    headers: {
-      Authorization: `Bearer ${user.token}`
-    }
-  })
-}
+// // GET /Posts/:id
+// export const showComment = (postId, commentId, user) => {
+//   console.log('inside showComment')
+//   return axios({
+//     url: apiUrl + '/post/' + postId + '/' + commentId,
+//     // method is optional, default is GET
+//     headers: {
+//       Authorization: `Bearer ${user.token}`
+//     }
+//   })
+// }
 
 // DELETE /Posts/:id
 export const deleteComment = (postId, commentId, user) => {
@@ -39,11 +39,12 @@ export const deleteComment = (postId, commentId, user) => {
 }
 
 // PATCH /Posts/:id
-export const updateComment = (data, id, user) => {
+export const updateComment = (data, commentId, user) => {
+  console.log(data, commentId, user)
   console.log('inside updateComment')
   return axios({
-    url: apiUrl + '/update-comments/' + id,
-    method: 'patch',
+    url: apiUrl + '/post/' + commentId,
+    method: 'PATCH',
     data: { post: data },
     headers: {
       Authorization: `Bearer ${user.token}`

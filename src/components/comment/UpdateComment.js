@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom'
 // API request
-import { updateComment, showComment } from '../../api/comment'
+import { updateComment } from '../../api/comment'
 
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
@@ -19,23 +19,23 @@ class UpdateComment extends Component {
     }
   }
 
-  componentDidMount () {
-    // one of the automatic router props we get is the match object - that has data about the params in our front-end route url
-    const { match, user, msgAlert } = this.props
+  // componentDidMount () {
+  //   // one of the automatic router props we get is the match object - that has data about the params in our front-end route url
+  //   const { match, user, msgAlert } = this.props
 
-    showComment(match.params.id, user)
-      .then(res => this.setState({ comment: res.data.comment }))
-      .then(() => msgAlert({
-        heading: 'Show comment success',
-        message: 'Check out the comment',
-        variant: 'success'
-      }))
-      .catch(err => msgAlert({
-        heading: 'Show comment failed :(',
-        message: 'Something went wrong: ' + err.message,
-        variant: 'danger'
-      }))
-  }
+  //   showComment(match.params.postId, match.params.postId, user)
+  //     .then(res => this.setState({ comment: res.data.comment }))
+  //     .then(() => msgAlert({
+  //       heading: 'Show comment success',
+  //       message: 'Check out the comment',
+  //       variant: 'success'
+  //     }))
+  //     .catch(err => msgAlert({
+  //       heading: 'Show comment failed :(',
+  //       message: 'Something went wrong: ' + err.message,
+  //       variant: 'danger'
+  //     }))
+  // }
 
   handleChange = (event) => {
     // because `this.state.comment` is an object with multiple keys, we have to do some fancy updating
@@ -51,7 +51,7 @@ class UpdateComment extends Component {
     event.preventDefault()
 
     const { user, msgAlert, history, match } = this.props
-
+    console.log(match.params.id)
     updateComment(this.state.comment, match.params.id, user)
       .then(res => history.push('/post/:id'))
       .then(() => msgAlert({ heading: 'Comment Updated!', message: 'Nice work, go check out your Comment.', variant: 'success' }))
