@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { withRouter, Link } from 'react-router-dom'
 // API request
 import { showPost, deletePost } from '../../api/post'
-import deleteComment from '../../api/comment'
+import { deleteComment } from '../../api/comment'
 import Button from 'react-bootstrap/Button'
 // import Card from 'react-bootstrap/Card'
 // component imports
@@ -24,10 +24,23 @@ class ShowPost extends Component {
     }
   }
 
+  // CreateComment.js:33
+  // {data: {…}, status: 201, statusText: "Created", headers: {…}, config: {…}, …}
+  // config: {url: "http://localhost:4741/comment/6125141280c41110440de06c", method: "post", data: "{\"comment\":{\"text\":\"what is your id\",\"image\":\"\"}}", headers: {…}, transformRequest: Array(1), …}
+  // data:
+  // post:
+  // comments: Array(10)
+  // 0:
+  // createdAt: "2021-08-24T17:52:28.343Z"
+  // image: ""
+  // text: "comment"
+  // updatedAt: "2021-08-24T17:52:28.343Z"
+  // _id: "612531dc66083d133a7acf52"
+
   componentDidMount () {
     // one of the automatic router props we get is the match object - that has data about the params in our front-end route url
     const { match, user, msgAlert } = this.props
-
+    console.log(this.state.post.comments)
     showPost(match.params.id, user)
       .then(res => this.setState({ post: res.data.post }))
       .then(() => msgAlert({
@@ -63,7 +76,7 @@ class ShowPost extends Component {
       )
   }
 
-    handleDeleteComment = (event) => {
+    handleDeleteComment = () => {
       const { match, user, msgAlert, history } = this.props
       deleteComment(match.params.id, user)
       // Redirect to the list of posts
@@ -86,7 +99,6 @@ class ShowPost extends Component {
 
     render () {
       const { title, subject, content, image, comments, _id } = this.state.post
-      // const { _id } = this.state.post
       return (
         <>
           {/* <Card style={{ width: '100%' }}>
@@ -103,6 +115,7 @@ class ShowPost extends Component {
             content={content}
             image={image}
             comments={comments}
+            // our function is passed in here as the onClick prop that will be sent to Post as props
             onClick={this.handleDeleteComment}
           />
           <Button onClick={this.handleDeletePost}>Delete</Button>

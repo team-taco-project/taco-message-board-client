@@ -2,7 +2,7 @@ import React, { Fragment } from 'react'
 import Card from 'react-bootstrap/Card'
 import Comment from './Comment'
 // creating a post component that is accepting the props it will be passed
-const Post = (props, { handleDeleteComment }) => (
+const Post = (props) => (
   <Fragment>
     <Card style={{ width: '100%' }}>
       <Card.Body>
@@ -11,12 +11,13 @@ const Post = (props, { handleDeleteComment }) => (
         <Card.Text>{props.content}</Card.Text>
         <Card.Text>{props.image}</Card.Text>
         {/* <Card.Text>{props.comments.map(comment => comment.text)}</Card.Text> */}
-        <Card.Text>{props.comments.map(({ id, text, image, handleDeleteComment }) => (
+        <Card.Text>{props.comments.map(({ id, text, image }) => (
           <Comment
             key={id}
             text= {text}
             image= {image}
-            onClick= {handleDeleteComment}
+            // here we are carrying through onClick from Post to be handed down to Comment
+            onClick={props.onClick}
           />
         ))}</Card.Text>
       </Card.Body>
