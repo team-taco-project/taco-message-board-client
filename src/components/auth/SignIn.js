@@ -17,16 +17,18 @@ class SignIn extends Component {
     }
   }
 
+// setState for email & password
 handleChange = (event) =>
   this.setState({
     [event.target.name]: event.target.value
   })
 
+// Function for Sign in
 onSignIn = (event) => {
   event.preventDefault()
-
+  // Destructure props
   const { msgAlert, history, setUser } = this.props
-
+  // API call
   signIn(this.state)
     .then((res) => setUser(res.data.user))
     .then(() =>
@@ -36,6 +38,7 @@ onSignIn = (event) => {
         variant: 'success'
       })
     )
+    // After Success to Post index page
     .then(() => history.push('/posts-all'))
     .catch((error) => {
       this.setState({ email: '', password: '' })

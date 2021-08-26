@@ -57,7 +57,8 @@ export const indexAllPosts = (user) => {
 // }
 
 // DELETE /Posts/:id
-export const deletePost = (id, user) => {
+export const deleteComment = (id, user) => {
+  console.log('delete')
   return axios({
     url: apiUrl + '/post/' + id,
     method: 'DELETE',

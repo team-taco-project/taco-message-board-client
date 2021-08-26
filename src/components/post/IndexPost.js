@@ -13,9 +13,10 @@ class IndexAllPosts extends React.Component {
     }
   }
 
+  // On page load list all posts
   componentDidMount () {
     const { user, msgAlert } = this.props
-
+    // API call
     indexAllPosts(user)
       .then((response) =>
         this.setState({
@@ -46,10 +47,13 @@ class IndexAllPosts extends React.Component {
     if (this.state.post === null) {
       return 'loading...'
     }
+    // available for use later
     let postJsx
+    // if 'there is no post'
     if (this.posts === null) {
       <h3>No post</h3>
     } else {
+      // map list of post
       postJsx = this.state.post.map((post) => (
         <li key={post._id}>
           <Card style={{ width: '100%' }}>

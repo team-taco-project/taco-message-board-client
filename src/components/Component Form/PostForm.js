@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react'
 import Card from 'react-bootstrap/Card'
-import Comment from './Comment'
+import Comment from './CommentForm'
 // creating a post component that is accepting the props it will be passed
 const Post = (props) => (
   <Fragment>
