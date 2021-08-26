@@ -133,6 +133,7 @@ class App extends Component {
               <UpdateComment msgAlert={this.msgAlert} user={user} />
             )}
           />
+
         </main>
       </Fragment>
     )
