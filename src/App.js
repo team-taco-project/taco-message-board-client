@@ -77,7 +77,7 @@ class App extends Component {
           />
           <Route
             path='/posts-all'
-            render={() => <IndexAllPosts msgAlert={this.msgAlert} user={user} />}
+            render={() => <IndexAllPosts msgAlert={this.msgAlert} />}
           />
 
           {/* authenticated post routes */}

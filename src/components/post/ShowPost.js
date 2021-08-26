@@ -55,14 +55,6 @@ class ShowPost extends Component {
     // const { _id } = this.state.post
     return (
       <>
-        {/* <Card style={{ width: '100%' }}>
-          <Card.Body>
-            <Card.Title>{title}</Card.Title>
-            <Card.Subtitle className="mb-2 text-muted">{subject}</Card.Subtitle>
-            <Card.Text>{content}</Card.Text>
-            <Card.Text>{image}</Card.Text>
-            <Card.Text>comment{comments.map(comment => comment.text)}</Card.Text> */}
-        {/* bringing in the component Post that is accepting passed down data as props */}
         <Post
           title={title}
           subject={subject}
