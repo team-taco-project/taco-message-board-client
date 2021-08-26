@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { withRouter, Link } from 'react-router-dom'
 // API request
 import { showPost, deletePost } from '../../api/post'
+import deleteComment from '../../api/comment'
 import Button from 'react-bootstrap/Button'
 // import Card from 'react-bootstrap/Card'
 // component imports
@@ -46,31 +47,70 @@ class ShowPost extends Component {
     deletePost(match.params.id, user)
       // Redirect to the list of posts
       .then(() => history.push('/posts-all'))
-      .then(() => msgAlert({ heading: 'Delete post successfully', message: 'post is no more', variant: 'success' }))
-      .catch(err => msgAlert({ heading: 'Delete post failed :(', message: 'Something went wrong: ' + err.message, variant: 'danger' }))
+      .then(() =>
+        msgAlert({
+          heading: 'Delete post successfully',
+          message: 'post is no more',
+          variant: 'success'
+        })
+      )
+      .catch((err) =>
+        msgAlert({
+          heading: 'Delete post failed :(',
+          message: 'Something went wrong: ' + err.message,
+          variant: 'danger'
+        })
+      )
   }
 
-  render () {
-    const { title, subject, content, image, comments, _id } = this.state.post
-    // const { _id } = this.state.post
-    return (
-      <>
-        <Post
-          title={title}
-          subject={subject}
-          content={content}
-          image={image}
-          comments={comments}
-        />
-        <Button onClick={this.handleDeletePost}>Delete</Button>
-        <Link to={`/post/${_id}/comments`}>Comment</Link>
-        {/* <Card.Link href="#">delete</Card.Link>
-            <Card.Link href="#">comments</Card.Link> */}
-        {/* </Card.Body>
-        </Card> */}
-      </>
-    )
-  }
+    handleDeleteComment = (event) => {
+      const { match, user, msgAlert, history } = this.props
+      deleteComment(match.params.id, user)
+      // Redirect to the list of posts
+        .then(() => history.push('/post/:id'))
+        .then(() =>
+          msgAlert({
+            heading: 'Delete post successfully',
+            message: 'post is no more',
+            variant: 'success'
+          })
+        )
+        .catch((err) =>
+          msgAlert({
+            heading: 'Delete post failed :(',
+            message: 'Something went wrong: ' + err.message,
+            variant: 'danger'
+          })
+        )
+    }
+
+    render () {
+      const { title, subject, content, image, comments, _id } = this.state.post
+      // const { _id } = this.state.post
+      return (
+        <>
+          {/* <Card style={{ width: '100%' }}>
+            <Card.Body>
+              <Card.Title>{title}</Card.Title>
+              <Card.Subtitle className="mb-2 text-muted">{subject}</Card.Subtitle>
+              <Card.Text>{content}</Card.Text>
+              <Card.Text>{image}</Card.Text>
+              <Card.Text>comment{comments.map(comment => comment.text)}</Card.Text> */}
+          {/* bringing in the component Post that is accepting passed down data as props */}
+          <Post
+            title={title}
+            subject={subject}
+            content={content}
+            image={image}
+            comments={comments}
+            onClick={this.handleDeleteComment}
+          />
+          <Button onClick={this.handleDeletePost}>Delete</Button>
+          <Link to={`/post/${_id}/comments`}>Comment</Link>
+
+        </>
+      )
+    }
 }
 
 export default withRouter(ShowPost)
