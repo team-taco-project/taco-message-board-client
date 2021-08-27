@@ -5,8 +5,10 @@ import { showPost, deletePost } from '../../api/post'
 import { deleteComment } from '../../api/comment'
 import Button from 'react-bootstrap/Button'
 import Post from '../ComponentForms/PostForm'
-import { showPostFailure, showPostSuccess, deletePostSuccess,
-  deletePostFailure, deleteCommentSuccess, deleteCommentFailure } from '../AutoDismissAlert/messages'
+import {
+  showPostFailure, showPostSuccess, deletePostSuccess,
+  deletePostFailure, deleteCommentSuccess, deleteCommentFailure
+} from '../AutoDismissAlert/messages'
 // creates single show post with constructor, state
 class ShowPost extends Component {
   constructor (props) {

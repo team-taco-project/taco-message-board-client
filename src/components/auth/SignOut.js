@@ -3,7 +3,7 @@ import { withRouter } from 'react-router-dom'
 
 import { signOut } from '../../api/auth'
 import { signOutSuccess } from '../AutoDismissAlert/messages'
-// Create sign out class 
+// Create sign out class
 class SignOut extends Component {
   // on page load
   componentDidMount () {
