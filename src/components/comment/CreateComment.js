@@ -31,6 +31,8 @@ class CreateComment extends Component {
               const { msgAlert, history, user, match } = this.props
 
               createComment(this.state, user, match.params.id)
+                // .then((res) => console.log(res))
+                // .then((res) => console.log(res.data.post.comments[0]._id))
                 .then((res) => history.push('/post/' + match.params.id))
                 .then(() =>
                   msgAlert({

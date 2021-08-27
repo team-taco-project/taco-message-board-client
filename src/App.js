@@ -15,6 +15,7 @@ import IndexAllPosts from './components/post/IndexPost'
 import ShowPost from './components/post/ShowPost'
 import UpdatePost from './components/post/UpdatePost'
 import CreateComment from './components/comment/CreateComment'
+import UpdateComment from './components/comment/UpdateComment'
 
 class App extends Component {
   constructor (props) {
@@ -77,7 +78,7 @@ class App extends Component {
           />
           <Route
             path='/posts-all'
-            render={() => <IndexAllPosts msgAlert={this.msgAlert} user={user} />}
+            render={() => <IndexAllPosts msgAlert={this.msgAlert} />}
           />
 
           {/* authenticated post routes */}
@@ -111,14 +112,26 @@ class App extends Component {
           />
           <AuthenticatedRoute
             user={user}
-            exact path='/post/:id'
-            render={() => <ShowPost msgAlert={this.msgAlert} user={user}/>}
+            exact
+            path='/post/:id'
+            render={() => <ShowPost msgAlert={this.msgAlert} user={user} />}
           />
           {/* authenticated comments routes */}
           <AuthenticatedRoute
             user={user}
-            exact path='/post/:id/comments'
-            render={() => <CreateComment msgAlert={this.msgAlert} user={user}/>}
+            exact
+            path='/comments/:id'
+            render={() => (
+              <CreateComment msgAlert={this.msgAlert} user={user} />
+            )}
+          />
+          <AuthenticatedRoute
+            user={user}
+            exact
+            path='/comments/:id/edit'
+            render={() => (
+              <UpdateComment msgAlert={this.msgAlert} user={user} />
+            )}
           />
         </main>
       </Fragment>
