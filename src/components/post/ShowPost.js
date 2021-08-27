@@ -112,6 +112,7 @@ class ShowPost extends Component {
             content={content}
             image={image}
             comments={comments}
+            postId={_id}
             // our function is passed in here as the onClick prop that will be sent to Post as props
             onClick={this.handleDeleteComment}
             onClickUpdate={this.handleUpdateComment}
