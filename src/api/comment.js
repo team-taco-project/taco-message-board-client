@@ -1,13 +1,11 @@
 import apiUrl from '../apiConfig'
 import axios from 'axios'
 
-// Create Post Request
-// assume that `data` is an object with `title` and `director`
-// { title: 'something', director: 'someone' }
+// Create comment Request
 export const createComment = (data, user, id) => {
   // data.postId = id
   return axios({
-    url: apiUrl + '/comment/' + id,
+    url: apiUrl + '/post/' + id,
     method: 'POST',
     data: { comment: data },
     headers: {
@@ -16,32 +14,11 @@ export const createComment = (data, user, id) => {
   })
 }
 
-// Index request
-// no data, we will need a token
-export const indexPosts = (user) => {
-  return axios({
-    // method key sets the HTTP verb/method for this request
-    // GET is the default method, so we can include or not up to us
-    method: 'GET',
-    url: apiUrl + '/posts',
-    headers: {
-      Authorization: `Bearer ${user.token}`
-    }
-  })
-}
-export const indexAllPosts = (user) => {
-  return axios({
-    // method key sets the HTTP verb/method for this request
-    // GET is the default method, so we can include or not up to us
-    method: 'GET',
-    url: apiUrl + '/posts-all'
-  })
-}
-
 // // GET /Posts/:id
-// export const showPost = (id, user) => {
+// export const showComment = (postId, commentId, user) => {
+//   console.log('inside showComment')
 //   return axios({
-//     url: apiUrl + '/post/' + id,
+//     url: apiUrl + '/post/' + postId + '/' + commentId,
 //     // method is optional, default is GET
 //     headers: {
 //       Authorization: `Bearer ${user.token}`
@@ -49,17 +26,11 @@ export const indexAllPosts = (user) => {
 //   })
 // }
 
-// GET /Post no id
-// export const showPost = (id) => {
-//   return axios({
-//     url: apiUrl + '/post/' + id
-//   })
-// }
-
 // DELETE /Posts/:id
-export const deletePost = (id, user) => {
+export const deleteComment = (postId, commentId, user) => {
+  console.log(postId, commentId)
   return axios({
-    url: apiUrl + '/post/' + id,
+    url: apiUrl + '/post/' + postId + '/' + commentId,
     method: 'DELETE',
     headers: {
       Authorization: `Bearer ${user.token}`
@@ -68,10 +39,12 @@ export const deletePost = (id, user) => {
 }
 
 // PATCH /Posts/:id
-export const updatePost = (data, id, user) => {
+export const updateComment = (data, commentId, user) => {
+  console.log(data, commentId, user._id)
+  console.log('inside updateComment')
   return axios({
-    url: apiUrl + '/update-post/' + id,
-    method: 'patch',
+    url: apiUrl + '/post/' + commentId,
+    method: 'PATCH',
     data: { post: data },
     headers: {
       Authorization: `Bearer ${user.token}`
