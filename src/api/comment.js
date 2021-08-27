@@ -1,7 +1,7 @@
 import apiUrl from '../apiConfig'
 import axios from 'axios'
 
-// Create comment Request
+// Create comment API Request, requires user.token
 export const createComment = (data, user, id) => {
   // data.postId = id
   return axios({
@@ -14,21 +14,8 @@ export const createComment = (data, user, id) => {
   })
 }
 
-// // GET /Posts/:id
-// export const showComment = (postId, commentId, user) => {
-//   console.log('inside showComment')
-//   return axios({
-//     url: apiUrl + '/post/' + postId + '/' + commentId,
-//     // method is optional, default is GET
-//     headers: {
-//       Authorization: `Bearer ${user.token}`
-//     }
-//   })
-// }
-
-// DELETE /Posts/:id
-export const deleteComment = (postId, commentId, user) => {
-  console.log(postId, commentId)
+// DELETE /Posts/:id, requires user.token
+export const deleteComment = (postId, commentId, user) => { 
   return axios({
     url: apiUrl + '/post/' + postId + '/' + commentId,
     method: 'DELETE',
@@ -38,10 +25,8 @@ export const deleteComment = (postId, commentId, user) => {
   })
 }
 
-// PATCH /Posts/:id
+// PATCH /Posts/:id, requires token
 export const updateComment = (data, postId, commentId, user) => {
-  console.log(data, postId, commentId, user._id)
-  console.log('inside updateComment')
   return axios({
     url: apiUrl + '/post/' + postId + '/' + commentId,
     method: 'PATCH',

@@ -1,6 +1,6 @@
 import apiUrl from '../apiConfig'
 import axios from 'axios'
-
+// sign up api
 export const signUp = (credentials) => {
   return axios({
     method: 'POST',
@@ -14,7 +14,7 @@ export const signUp = (credentials) => {
     }
   })
 }
-
+// sign in api
 export const signIn = (credentials) => {
   return axios({
     url: apiUrl + '/sign-in/',
@@ -27,7 +27,7 @@ export const signIn = (credentials) => {
     }
   })
 }
-
+// sign out api, requires token
 export const signOut = (user) => {
   return axios({
     url: apiUrl + '/sign-out/',
@@ -37,7 +37,7 @@ export const signOut = (user) => {
     }
   })
 }
-
+// change password api, requires token
 export const changePassword = (passwords, user) => {
   return axios({
     url: apiUrl + '/change-password/',

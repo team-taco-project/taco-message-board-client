@@ -4,18 +4,17 @@ import { withRouter, Link } from 'react-router-dom'
 import { showPost, deletePost } from '../../api/post'
 import { deleteComment } from '../../api/comment'
 import Button from 'react-bootstrap/Button'
-// import Card from 'react-bootstrap/Card'
-// component imports
 import Post from '../ComponentForms/PostForm'
-
+import { showPostFailure, showPostSuccess, deletePostSuccess,
+  deletePostFailure, deleteCommentSuccess, deleteCommentFailure } from '../AutoDismissAlert/messages'
+// creates single show post with constructor, state
 class ShowPost extends Component {
   constructor (props) {
     super(props)
 
     this.state = {
-      // using null as a starting value will help us manage the "loading state" of our ShowMovie component
-      post: { // this should not be null
-        title: '', // must provide starting values for the form inputs
+      post: {
+        title: '',
         subject: '',
         content: '',
         image: '',
@@ -24,35 +23,25 @@ class ShowPost extends Component {
     }
   }
 
-  // CreateComment.js:33
-  // {data: {…}, status: 201, statusText: "Created", headers: {…}, config: {…}, …}
-  // config: {url: "http://localhost:4741/comment/6125141280c41110440de06c", method: "post", data: "{\"comment\":{\"text\":\"what is your id\",\"image\":\"\"}}", headers: {…}, transformRequest: Array(1), …}
-  // data:
-  // post:
-  // comments: Array(10)
-  // 0:
-  // createdAt: "2021-08-24T17:52:28.343Z"
-  // image: ""
-  // text: "comment"
-  // updatedAt: "2021-08-24T17:52:28.343Z"
-  // _id: "612531dc66083d133a7acf52"
-
+  // on initial page render
   componentDidMount () {
-    // one of the automatic router props we get is the match object - that has data about the params in our front-end route url
+    // destructuring props for later use
     const { match, user, msgAlert } = this.props
+    // show post API call
     showPost(match.params.id, user)
+    // sets state of post
       .then((res) => this.setState({ post: res.data.post }))
       .then(() =>
         msgAlert({
           heading: 'Show post success',
-          message: 'Check out the post',
+          message: showPostSuccess,
           variant: 'success'
         })
       )
-      .catch((err) =>
+      .catch(() =>
         msgAlert({
           heading: 'Show post failed :(',
-          message: 'Something went wrong: ' + err.message,
+          message: showPostFailure,
           variant: 'danger'
         })
       )
@@ -66,42 +55,45 @@ class ShowPost extends Component {
       .then(() =>
         msgAlert({
           heading: 'Delete post successfully',
-          message: 'post is no more',
+          message: deletePostSuccess,
           variant: 'success'
         })
       )
-      .catch((err) =>
+      .catch(() =>
         msgAlert({
           heading: 'Delete post failed :(',
-          message: 'Something went wrong: ' + err.message,
+          message: deletePostFailure,
           variant: 'danger'
         })
       )
   }
 
+  // handles delete comment
     handleDeleteComment = (_id) => {
-      console.log('id', _id)
+      // destructuring props for later use
       const { match, user, msgAlert, history } = this.props
+      // delete comment API call
       deleteComment(match.params.id, _id, user)
-      // Redirect to the list of posts
-        .then(() => history.push('/post/:id'))
         .then(() =>
           msgAlert({
             heading: 'Delete comment successfully',
-            message: 'post is no more',
+            message: deleteCommentSuccess,
             variant: 'success'
           })
         )
-        .catch((err) =>
+        // Redirect to the list of posts
+        .then(() => history.push('/post/:id'))
+        .catch(() =>
           msgAlert({
             heading: 'Delete post failed :(',
-            message: 'Something went wrong: ' + err.message,
+            message: deleteCommentFailure,
             variant: 'danger'
           })
         )
     }
 
     render () {
+      // deconstructing state of post for later use
       const { title, subject, content, image, comments, _id } = this.state.post
       return (
         <>
@@ -113,11 +105,13 @@ class ShowPost extends Component {
             image={image}
             comments={comments}
             postId={_id}
-            // our function is passed in here as the onClick prop that will be sent to Post as props
+            // our functions are passed to PostForm
             onClick={this.handleDeleteComment}
             onClickUpdate={this.handleUpdateComment}
           />
+          {/* button to delete post */}
           <Button onClick={this.handleDeletePost}>Delete</Button>
+          {/* create comment */}
           <Link to={`/comments/${_id}`}>Comment</Link>
         </>
       )
