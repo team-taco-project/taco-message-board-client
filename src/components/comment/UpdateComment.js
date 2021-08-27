@@ -51,8 +51,8 @@ class UpdateComment extends Component {
     event.preventDefault()
 
     const { user, msgAlert, history, match } = this.props
-    console.log(match.params.id)
-    updateComment(this.state.comment, match.params.id, user)
+    console.log(match.params)
+    updateComment(this.state.comment, match.params.id, match.params.postId, user)
       .then(res => history.push('/post/:id'))
       .then(() => msgAlert({ heading: 'Comment Updated!', message: 'Nice work, go check out your Comment.', variant: 'success' }))
       .catch(err => {
