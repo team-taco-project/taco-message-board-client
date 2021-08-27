@@ -1,9 +1,10 @@
 import React from 'react'
 import { withRouter, Link } from 'react-router-dom'
 import { indexAllPosts } from '../../api/post'
+import { showIndexFailure, showIndexSuccess } from '../AutoDismissAlert/messages'
 import Card from 'react-bootstrap/Card'
-// import Button from 'react-bootstrap/Button'
 
+// create index of all posts class and constructor with state
 class IndexAllPosts extends React.Component {
   constructor (props) {
     super(props)
@@ -13,9 +14,10 @@ class IndexAllPosts extends React.Component {
     }
   }
 
+  // occurs on page render first time
   componentDidMount () {
     const { user, msgAlert } = this.props
-
+    // API call for index of all posts
     indexAllPosts(user)
       .then((response) =>
         this.setState({
@@ -26,14 +28,14 @@ class IndexAllPosts extends React.Component {
       .then(() =>
         msgAlert({
           heading: 'Index Success',
-          message: 'Here are the posts',
+          message: showIndexSuccess,
           variant: 'success'
         })
       )
       .catch(() =>
         msgAlert({
           heading: 'Index Fail',
-          message: 'Fail',
+          message: showIndexFailure,
           variant: 'danger'
         })
       )
@@ -42,14 +44,15 @@ class IndexAllPosts extends React.Component {
   render () {
     // if statement handles the issue when state is null
     // cannot handle initial render with null.
-    // const { match } = this.props
     if (this.state.post === null) {
       return 'loading...'
     }
+    // variable to save array.map()
     let postJsx
     if (this.posts === null) {
       <h3>No post</h3>
     } else {
+      // create list of posts
       postJsx = this.state.post.map((post) => (
         <li key={post._id}>
           <Card style={{ width: '100%' }}>
@@ -70,8 +73,9 @@ class IndexAllPosts extends React.Component {
     }
     return (
       <div>
-        <h1>post</h1>
+        <h1>Post</h1>
         <p>{this.state.loading && 'loading ...'}</p>
+        {/* display posts */}
         <ul>{postJsx}</ul>
       </div>
     )

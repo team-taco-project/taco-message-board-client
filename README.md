@@ -1,7 +1,7 @@
 # Message Board: A Description
 
 # IMPORTANT LINKS
-- Other Repo 
+- Other Repo [API REPO](https://github.com/team-taco-project/taco-message-board-API)
 - Deployed Client 
 - Deployed API 
 
@@ -22,7 +22,9 @@
 12. As a signed in user, I would like to delete my comment on other users' posts on the message board.
 # TECHNOLOGIES USED
 - Javascript
-- 
+- React
+- HTML/CSS
+- React Bootstrap
 # UNSOLVED PROBLEMS
 
 # WIREFRAMES
@@ -30,3 +32,5 @@
 <a href="https://imgur.com/lY0lGMb"><img src="https://i.imgur.com/lY0lGMb.jpg" title="source: imgur.com" /></a>
 <a href="https://imgur.com/Na4A8s5"><img src="https://i.imgur.com/Na4A8s5.jpg" title="source: imgur.com" /></a>
 <a href="https://imgur.com/89C7oXK"><img src="https://i.imgur.com/89C7oXK.jpg" title="source: imgur.com" /></a>
+<a href="https://imgur.com/89C7oXK"><img src="https://i.imgur.com/MMPHRES.jpg" title="source: imgur.com" /></a>
+<a href="https://imgur.com/89C7oXK"><img src="https://i.imgur.com/hriIvaR.jpg" title="source: imgur.com" /></a>
