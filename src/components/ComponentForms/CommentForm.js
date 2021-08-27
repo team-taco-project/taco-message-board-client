@@ -5,15 +5,12 @@ import { Link } from 'react-router-dom'
 
 const Comment = (props) => (
   <ul>
-    <li>Id: {props._id}</li>
-    <li>postId: {props.postId}</li>
     <li>Comment: {props.text}</li>
     <li>Image: {props.image}</li>
-    <li>owner: {props.owner}</li>
     {/* here Comment is accepting onClick from props */}
     <Button onClick={() => props.onClick(props._id)}>Delete</Button>
-    <Link to={`/comments/${props.postId}/${props._id}/`}>Update</Link>
-    {/* <Button onClick={() => props.onClickUpdate(props._id)}>Update</Button> */}
+    <Link to={`/comments/${props.postId}/${props._id}/`}>Update
+      <Button onClick={() => props.onClickUpdate(props._id)}>Update</Button></Link>
   </ul>
 )
 

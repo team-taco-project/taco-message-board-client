@@ -6,7 +6,7 @@ import { signUpSuccess, signUpFailure } from '../AutoDismissAlert/messages'
 
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
-
+// create sign up class with constructor and state
 class SignUp extends Component {
   constructor (props) {
     super(props)
@@ -18,16 +18,19 @@ class SignUp extends Component {
     }
   }
 
+// handles change of state in input fields
 handleChange = (event) =>
   this.setState({
     [event.target.name]: event.target.value
   })
 
+// handles sign up function on click
 onSignUp = (event) => {
+  // prevents page reload
   event.preventDefault()
-
+  // deconstruct props for later use
   const { msgAlert, history, setUser } = this.props
-
+  // sign up API call
   signUp(this.state)
     .then(() => signIn(this.state))
     .then((res) => setUser(res.data.user))
@@ -38,6 +41,7 @@ onSignUp = (event) => {
         variant: 'success'
       })
     )
+    // redirect user
     .then(() => history.push('/posts-all'))
     .catch((error) => {
       this.setState({ email: '', password: '', passwordConfirmation: '' })
@@ -50,8 +54,9 @@ onSignUp = (event) => {
 }
 
 render () {
+  // destructuring state for later use
   const { email, password, passwordConfirmation } = this.state
-
+  // sign up user form
   return (
     <div className='row'>
       <div className='col-sm-10 col-md-8 mx-auto mt-5'>

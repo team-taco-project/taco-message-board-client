@@ -17,6 +17,8 @@ import UpdatePost from './components/post/UpdatePost'
 import CreateComment from './components/comment/CreateComment'
 import UpdateComment from './components/comment/UpdateComment'
 
+// create app class with constructor and state
+
 class App extends Component {
   constructor (props) {
     super(props)
@@ -26,16 +28,18 @@ class App extends Component {
     }
   }
 
+  // set user method sets state of user
   setUser = (user) => this.setState({ user })
-
+  // clear user method sets state of user to null
   clearUser = () => this.setState({ user: null })
-
+  // delete alert method
   deleteAlert = (id) => {
     this.setState((state) => {
       return { msgAlerts: state.msgAlerts.filter((msg) => msg.id !== id) }
     })
   }
 
+  // message alert method creates messages
   msgAlert = ({ heading, message, variant }) => {
     const id = uuid()
     this.setState((state) => {
@@ -46,8 +50,9 @@ class App extends Component {
   }
 
   render () {
+    // deconstructing state for later use
     const { msgAlerts, user } = this.state
-
+    // displays header
     return (
       <Fragment>
         <p>title</p>
@@ -62,6 +67,7 @@ class App extends Component {
             deleteAlert={this.deleteAlert}
           />
         ))}
+        {/* routes */}
         <main className='container'>
           {/* unauthenticated post routes */}
           <Route

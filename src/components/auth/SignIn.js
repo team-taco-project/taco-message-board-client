@@ -6,27 +6,30 @@ import { signInSuccess, signInFailure } from '../AutoDismissAlert/messages'
 
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
-
+// Create sign in class with state
 class SignIn extends Component {
   constructor (props) {
     super(props)
 
     this.state = {
-      email: 'a@aa.com',
-      password: '456'
+      email: '',
+      password: ''
     }
   }
 
+// handles state change of input fields
 handleChange = (event) =>
   this.setState({
     [event.target.name]: event.target.value
   })
 
+// handles sign in event
 onSignIn = (event) => {
+  // prevents page reload
   event.preventDefault()
-
+  // destructuring of props for later use
   const { msgAlert, history, setUser } = this.props
-
+  // sign in API call
   signIn(this.state)
     .then((res) => setUser(res.data.user))
     .then(() =>
@@ -36,6 +39,7 @@ onSignIn = (event) => {
         variant: 'success'
       })
     )
+    // send to post list when success
     .then(() => history.push('/posts-all'))
     .catch((error) => {
       this.setState({ email: '', password: '' })
@@ -48,8 +52,9 @@ onSignIn = (event) => {
 }
 
 render () {
+  // destructuring state for later use
   const { email, password } = this.state
-
+  // sign in form
   return (
     <div className='row'>
       <div className='col-sm-10 col-md-8 mx-auto mt-5'>

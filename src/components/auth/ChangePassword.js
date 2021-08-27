@@ -6,7 +6,7 @@ import { changePasswordSuccess, changePasswordFailure } from '../AutoDismissAler
 
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
-
+// create change password component
 class ChangePassword extends Component {
   constructor (props) {
     super(props)
@@ -17,16 +17,19 @@ class ChangePassword extends Component {
     }
   }
 
+// handles state change in input fields of form
 handleChange = (event) =>
   this.setState({
     [event.target.name]: event.target.value
   })
 
+// change password function on click event
 onChangePassword = (event) => {
+  // prevents reset of browser
   event.preventDefault()
-
+  // destructuring fo props for later use
   const { msgAlert, history, user } = this.props
-
+  // api call to change password
   changePassword(this.state, user)
     .then(() =>
       msgAlert({
@@ -35,8 +38,10 @@ onChangePassword = (event) => {
         variant: 'success'
       })
     )
+    // returns to homepage
     .then(() => history.push('/'))
     .catch((error) => {
+      // sets clears old and new password state if error
       this.setState({ oldPassword: '', newPassword: '' })
       msgAlert({
         heading: 'Change Password Failed with error: ' + error.message,
@@ -47,6 +52,7 @@ onChangePassword = (event) => {
 }
 
 render () {
+  // destructuring of passwords for later use
   const { oldPassword, newPassword } = this.state
 
   return (

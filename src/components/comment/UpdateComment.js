@@ -5,37 +5,19 @@ import { updateComment } from '../../api/comment'
 
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
-
+import { updateCommentSuccess, updateCommentFailure } from '../AutoDismissAlert/messages'
+// create update comment class -- under construction
 class UpdateComment extends Component {
   constructor (props) {
     super(props)
 
     this.state = {
-      // using null as a starting value will help us manage the "loading state" of our UpdateMovie component
-      comment: { // this should not be null
+      comment: {
         text: '',
         image: ''
       }
     }
   }
-
-  // componentDidMount () {
-  //   // one of the automatic router props we get is the match object - that has data about the params in our front-end route url
-  //   const { match, user, msgAlert } = this.props
-
-  //   showComment(match.params.postId, match.params.postId, user)
-  //     .then(res => this.setState({ comment: res.data.comment }))
-  //     .then(() => msgAlert({
-  //       heading: 'Show comment success',
-  //       message: 'Check out the comment',
-  //       variant: 'success'
-  //     }))
-  //     .catch(err => msgAlert({
-  //       heading: 'Show comment failed :(',
-  //       message: 'Something went wrong: ' + err.message,
-  //       variant: 'danger'
-  //     }))
-  // }
 
   handleChange = (event) => {
     // because `this.state.comment` is an object with multiple keys, we have to do some fancy updating
@@ -51,21 +33,27 @@ class UpdateComment extends Component {
     event.preventDefault()
 
     const { user, msgAlert, history, match } = this.props
-    console.log(match.params)
-    updateComment(this.state.comment, match.params.postId, match.params.commentId, user)
-      .then(res => history.push(`/post/${match.params.postId}`))
-      .then(() => msgAlert({ heading: 'Comment Updated!', message: 'Nice work, go check out your Comment.', variant: 'success' }))
-      .catch(err => {
+    updateComment(this.state.comment, match.params.id, match.params.postId, user)
+      .then(() => msgAlert({
+        heading: 'Comment Updated!',
+        message: updateCommentSuccess,
+        variant: 'success'
+      }))
+      // redirect on success
+      .then(res => history.push('/post/:id'))
+      .catch(() => {
         msgAlert({
           heading: 'Comment update failed :(',
-          message: 'Something went wrong: ' + err.message,
+          message: updateCommentFailure,
           variant: 'danger'
         })
       })
   }
 
   render () {
+    // destructuring comment state for later use
     const { text, image } = this.state.comment
+    // update comment form
     return (
       <>
         <div className='row'>
@@ -85,7 +73,6 @@ class UpdateComment extends Component {
               <Form.Group controlId='image'>
                 <Form.Label>Image</Form.Label>
                 <Form.Control
-
                   name='image'
                   value={image}
                   placeholder='image'
