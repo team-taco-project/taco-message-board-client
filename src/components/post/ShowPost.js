@@ -84,17 +84,17 @@ class ShowPost extends Component {
       const { match, user, msgAlert, history } = this.props
       deleteComment(match.params.id, _id, user)
       // Redirect to the list of posts
-        .then(() => history.push('/post/:id'))
+        .then(() => history.push('/post/id'))
         .then(() =>
           msgAlert({
             heading: 'Delete comment successfully',
-            message: 'post is no more',
+            message: 'comment is no more',
             variant: 'success'
           })
         )
         .catch((err) =>
           msgAlert({
-            heading: 'Delete post failed :(',
+            heading: 'Delete comment failed :(',
             message: 'Something went wrong: ' + err.message,
             variant: 'danger'
           })
@@ -113,6 +113,7 @@ class ShowPost extends Component {
             image={image}
             comments={comments}
             postId={_id}
+            owner={comments.owner}
             // our function is passed in here as the onClick prop that will be sent to Post as props
             onClick={this.handleDeleteComment}
             onClickUpdate={this.handleUpdateComment}

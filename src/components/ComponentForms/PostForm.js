@@ -15,13 +15,14 @@ const Post = (props) => (
         <Card.Text>post Id:{props.postId}</Card.Text>
         {/* <Card.Text>{props.comments.map(comment => comment.text)}</Card.Text> */}
         <Card.Text>
-          {props.comments.map(({ id, text, image, _id }) => (
+          {props.comments.map(({ id, text, image, _id, owner }) => (
             <Comment
               key={id}
               text={text}
               image={image}
               _id={_id}
               postId={props.postId}
+              owner={owner}
               // here we are carrying through onClick from Post to be handed down to Comment
               onClick={props.onClick}
               // onClickUpdate={props.onClickUpdate}

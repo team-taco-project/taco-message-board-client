@@ -43,9 +43,9 @@ export const updateComment = (data, postId, commentId, user) => {
   console.log(data, postId, commentId, user._id)
   console.log('inside updateComment')
   return axios({
-    url: apiUrl + '/post/' + postId + '/' + commentId,
+    url: apiUrl + '/comments/' + postId + '/' + commentId,
     method: 'PATCH',
-    data: { post: data },
+    data: { comment: data },
     headers: {
       Authorization: `Bearer ${user.token}`
     }
