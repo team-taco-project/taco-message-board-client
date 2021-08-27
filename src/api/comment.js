@@ -40,7 +40,7 @@ export const deleteComment = (postId, commentId, user) => {
 
 // PATCH /Posts/:id
 export const updateComment = (data, commentId, user) => {
-  console.log(data, commentId, user)
+  console.log(data, commentId, user._id)
   console.log('inside updateComment')
   return axios({
     url: apiUrl + '/post/' + commentId,

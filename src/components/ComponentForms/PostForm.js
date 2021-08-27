@@ -12,6 +12,7 @@ const Post = (props) => (
         </Card.Subtitle>
         <Card.Text>{props.content}</Card.Text>
         <Card.Text>{props.image}</Card.Text>
+        <Card.Text>post Id:{props.postId}</Card.Text>
         {/* <Card.Text>{props.comments.map(comment => comment.text)}</Card.Text> */}
         <Card.Text>
           {props.comments.map(({ id, text, image, _id }) => (
@@ -20,9 +21,10 @@ const Post = (props) => (
               text={text}
               image={image}
               _id={_id}
+              postId={props._id}
               // here we are carrying through onClick from Post to be handed down to Comment
               onClick={props.onClick}
-              onClickUpdate={props.onClickUpdate}
+              // onClickUpdate={props.onClickUpdate}
             />
           ))}
         </Card.Text>
