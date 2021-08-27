@@ -30,7 +30,7 @@ export const updateComment = (data, postId, commentId, user) => {
   return axios({
     url: apiUrl + '/post/' + postId + '/' + commentId,
     method: 'PATCH',
-    data: { post: data },
+    data: { comment: data },
     headers: {
       Authorization: `Bearer ${user.token}`
     }
