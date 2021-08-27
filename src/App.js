@@ -128,7 +128,7 @@ class App extends Component {
           <AuthenticatedRoute
             user={user}
             exact
-            path='/comments/:id/:postId'
+            path='/comments/:postId/:id'
             render={() => (
               <UpdateComment msgAlert={this.msgAlert} user={user} />
             )}

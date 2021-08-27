@@ -21,7 +21,7 @@ const Post = (props) => (
               text={text}
               image={image}
               _id={_id}
-              postId={props._id}
+              postId={props.postId}
               // here we are carrying through onClick from Post to be handed down to Comment
               onClick={props.onClick}
               // onClickUpdate={props.onClickUpdate}

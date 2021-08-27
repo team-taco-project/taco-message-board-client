@@ -11,7 +11,7 @@ const Comment = (props) => (
     <li>Image: {props.image}</li>
     {/* here Comment is accepting onClick from props */}
     <Button onClick={() => props.onClick(props._id)}>Delete</Button>
-    <Link to={`/comments/${props._id}/`}>update</Link>
+    <Link to={`/comments/${props.postId}/${props._id}/`}>Update</Link>
     {/* <Button onClick={() => props.onClickUpdate(props._id)}>Update</Button> */}
   </ul>
 )
