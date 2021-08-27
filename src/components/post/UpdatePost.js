@@ -53,10 +53,11 @@ class UpdatePost extends Component {
     const { user, msgAlert, history, match } = this.props
     // updatePost API call
     updatePost(this.state.post, match.params.id, user)
-      .then(() => msgAlert({ 
+      .then(() => msgAlert({
         heading: 'Post Updated!',
         message: updatePostSuccess,
-        variant: 'success' }))
+        variant: 'success'
+      }))
       .then(res => history.push('/posts-all'))
       .catch(() => {
         msgAlert({

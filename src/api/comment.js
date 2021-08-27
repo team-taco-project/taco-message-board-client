@@ -15,7 +15,7 @@ export const createComment = (data, user, id) => {
 }
 
 // DELETE /Posts/:id, requires user.token
-export const deleteComment = (postId, commentId, user) => { 
+export const deleteComment = (postId, commentId, user) => {
   return axios({
     url: apiUrl + '/post/' + postId + '/' + commentId,
     method: 'DELETE',

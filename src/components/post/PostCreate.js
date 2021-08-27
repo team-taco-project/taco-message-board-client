@@ -50,7 +50,7 @@ class CreatePost extends Component {
                     variant: 'danger'
                   })
                 })
-                // redirect after post create fail 
+                // redirect after post create fail
                 .then(() => history.push('/posts-all'))
             }
 
