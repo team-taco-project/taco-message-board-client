@@ -2,18 +2,18 @@ import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom'
 // API request
 import { updatePost, showPost } from '../../api/post'
+import { updatePostSuccess, updatePostFailure } from '../AutoDismissAlert/messages'
 
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
-
+// create class for update post with constructor and state
 class UpdatePost extends Component {
   constructor (props) {
     super(props)
 
     this.state = {
-      // using null as a starting value will help us manage the "loading state" of our UpdateMovie component
-      post: { // this should not be null
-        title: '', // must provide starting values for the form inputs
+      post: {
+        title: '',
         subject: '',
         content: '',
         image: ''
@@ -21,17 +21,14 @@ class UpdatePost extends Component {
     }
   }
 
+  // on page load
   componentDidMount () {
-    // one of the automatic router props we get is the match object - that has data about the params in our front-end route url
+    // destructuring props for later use
     const { match, user, msgAlert } = this.props
-
+    // show post API call
     showPost(match.params.id, user)
+    // sets new state of post
       .then(res => this.setState({ post: res.data.post }))
-      .then(() => msgAlert({
-        heading: 'Show post success',
-        message: 'Check out the post',
-        variant: 'success'
-      }))
       .catch(err => msgAlert({
         heading: 'Show post failed :(',
         message: 'Something went wrong: ' + err.message,
@@ -39,35 +36,41 @@ class UpdatePost extends Component {
       }))
   }
 
+  // handles state change for input
   handleChange = (event) => {
-    // because `this.state.post` is an object with multiple keys, we have to do some fancy updating
     const userInput = { [event.target.name]: event.target.value }
     this.setState(currState => {
-      // "Spread" out current post state key/value pairs, then add the new one at the end
-      // this will override the old key/value pair in the state but leave the others untouched
+      // "Spread" out current post state key/value pairs
       return { post: { ...currState.post, ...userInput } }
     })
   }
 
+  // updates post on click
   onUpdatePost = (event) => {
+    // prevent page reload
     event.preventDefault()
-
+    // destructuring props for later use
     const { user, msgAlert, history, match } = this.props
-
+    // updatePost API call
     updatePost(this.state.post, match.params.id, user)
+      .then(() => msgAlert({ 
+        heading: 'Post Updated!',
+        message: updatePostSuccess,
+        variant: 'success' }))
       .then(res => history.push('/posts-all'))
-      .then(() => msgAlert({ heading: 'Post Updated!', message: 'Nice work, go check out your Post.', variant: 'success' }))
-      .catch(err => {
+      .catch(() => {
         msgAlert({
           heading: 'Post update failed :(',
-          message: 'Something went wrong: ' + err.message,
+          message: updatePostFailure,
           variant: 'danger'
         })
       })
   }
 
   render () {
+    // destructuring state of post for later use
     const { title, subject, content, image } = this.state.post
+    // update post form
     return (
       <>
         <div className='row'>

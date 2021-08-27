@@ -5,11 +5,8 @@ import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 
 import { createPost } from '../../api/post'
-// import {
-//   createPostSuccess,
-//   createPostFailure
-// } from '../AutoDismissAlert/messages'
-
+import { createPostSuccess, createPostFailure } from '../AutoDismissAlert/messages'
+// create create post class, constructor and state
 class CreatePost extends Component {
   constructor (props) {
     super(props)
@@ -22,38 +19,45 @@ class CreatePost extends Component {
     }
   }
 
+  // changes state of input values
             handleChange = (event) =>
               this.setState({
                 [event.target.name]: event.target.value
               })
 
+            // creates post on click
             onCreatePost = (event) => {
+              // prevent page refresh
               event.preventDefault()
-
+              // destructuring props for use later
               const { msgAlert, history, user } = this.props
-
+              // create post API call
               createPost(this.state, user)
-                .then((res) => history.push('/posts'))
                 .then(() =>
                   msgAlert({
                     heading: 'Post Created',
-                    // message: createPostSuccess,
+                    message: createPostSuccess,
                     variant: 'success'
                   })
                 )
-                .then(() => history.push('/posts-all'))
+                // redirect to after post created
+                .then((res) => history.push('/posts-all'))
                 .catch((error) => {
                   this.setState({ title: '', subject: '', content: '', image: '' })
                   msgAlert({
                     heading: 'Failed with error: ' + error.message,
-                    // message: createPostFailure,
+                    message: createPostFailure,
                     variant: 'danger'
                   })
                 })
+                // redirect after post create fail 
+                .then(() => history.push('/posts-all'))
             }
 
             render () {
+              // destructuring state for later use
               const { title, subject, content, image } = this.state
+              // create create post form
               return (
                 <>
                   <div className='row'>
@@ -95,7 +99,6 @@ class CreatePost extends Component {
                         <Form.Group controlId='image'>
                           <Form.Label>Image</Form.Label>
                           <Form.Control
-
                             name='image'
                             value={image}
                             placeholder='image'

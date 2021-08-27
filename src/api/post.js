@@ -28,6 +28,7 @@ export const indexPosts = (user) => {
     }
   })
 }
+// index all posts, no token needed.  Anyone can view posts.
 export const indexAllPosts = (user) => {
   return axios({
     // method key sets the HTTP verb/method for this request
@@ -37,7 +38,7 @@ export const indexAllPosts = (user) => {
   })
 }
 
-// GET /Posts/:id
+// GET /Posts/:id, requires token
 export const showPost = (id, user) => {
   return axios({
     url: apiUrl + '/post/' + id,
@@ -48,14 +49,7 @@ export const showPost = (id, user) => {
   })
 }
 
-// GET /Post no id
-// export const showPost = (id) => {
-//   return axios({
-//     url: apiUrl + '/post/' + id
-//   })
-// }
-
-// DELETE /Posts/:id
+// DELETE /Posts/:id, requires token
 export const deletePost = (id, user) => {
   return axios({
     url: apiUrl + '/post/' + id,
@@ -66,7 +60,7 @@ export const deletePost = (id, user) => {
   })
 }
 
-// PATCH /Posts/:id
+// PATCH /Posts/:id, requires token
 export const updatePost = (data, id, user) => {
   return axios({
     url: apiUrl + '/update-post/' + id,

@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react'
 import Card from 'react-bootstrap/Card'
 import Comment from './CommentForm'
-// creating a post component that is accepting the props it will be passed
+// create show post format
 const Post = (props) => (
   <Fragment>
     <Card style={{ width: '100%' }}>
@@ -16,6 +16,7 @@ const Post = (props) => (
         {/* <Card.Text>{props.comments.map(comment => comment.text)}</Card.Text> */}
         <Card.Text>
           {props.comments.map(({ id, text, image, _id }) => (
+            // passing props to comment form component
             <Comment
               key={id}
               text={text}
