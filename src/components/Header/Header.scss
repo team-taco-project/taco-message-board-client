@@ -6,10 +6,12 @@
 }
 #text-bar {
   display: flex;
-  margin-left: 200px;
+  overflow-wrap: normal;
+  margin: auto;
+  margin-inline-start: 70px;
   font-weight: 900;
-  -webkit-text-stroke: 1px rgb(255, 255, 255);
-  text-shadow: 2px 2px 0 #000;
+  -webkit-text-stroke: 1px 0 rgb(255, 255, 255);
+  justify-items: center;
 }
 #text-bar:hover {
     background: rgba(15, 214, 228, 0.349);
