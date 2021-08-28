@@ -6,6 +6,7 @@ import { updateComment } from '../../api/comment'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 import { updateCommentSuccess, updateCommentFailure } from '../AutoDismissAlert/messages'
+import './comment.scss'
 // create update comment class -- under construction
 class UpdateComment extends Component {
   constructor (props) {
@@ -56,9 +57,9 @@ class UpdateComment extends Component {
     // update comment form
     return (
       <>
-        <div className='row'>
+        <div className='row' id="showPost">
           <div className='col-sm-10 col-md-8 mx-auto mt-5'>
-            <h3>Update Comment</h3>
+            <h3 className='register'>Update Comment</h3>
             <Form onSubmit={this.onUpdateComment}>
               <Form.Group controlId='text'>
                 <Form.Label>Comment Text</Form.Label>
@@ -78,6 +79,7 @@ class UpdateComment extends Component {
                   onChange={this.handleChange}
                 />
               </Form.Group>
+              <br/>
               <Button variant='primary' type='submit'>
                     Submit
               </Button>

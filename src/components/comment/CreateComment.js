@@ -5,7 +5,7 @@ import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 import { createCommentSuccess, createCommentFailure } from '../AutoDismissAlert/messages'
 import { createComment } from '../../api/comment'
-
+import './comment.scss'
 // create create comment class with constructor and state
 class CreateComment extends Component {
   constructor (props) {

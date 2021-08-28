@@ -1,6 +1,8 @@
 import React, { Fragment } from 'react'
 import Card from 'react-bootstrap/Card'
 import Comment from './CommentForm'
+import '../post/post.scss'
+
 // create show post format
 const Post = (props) => (
   <Fragment>
