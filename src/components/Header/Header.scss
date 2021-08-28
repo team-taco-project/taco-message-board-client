@@ -1,0 +1,17 @@
+.navbar1 {
+    border: 0;
+    border-radius: 0 !important;
+    font-size: 20px;
+    background-image:linear-gradient(to top ,#5e5a5a17 0,#1f68626c 100%);
+}
+#text-bar {
+  display: flex;
+  margin-left: 200px;
+  font-weight: 900;
+  -webkit-text-stroke: 1px rgb(255, 255, 255);
+  text-shadow: 2px 2px 0 #000;
+}
+#text-bar:hover {
+    background: rgba(15, 214, 228, 0.349);
+    border-radius: 5px;
+}

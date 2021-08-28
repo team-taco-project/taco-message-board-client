@@ -3,7 +3,6 @@ import { withRouter, Link } from 'react-router-dom'
 import { indexAllPosts } from '../../api/post'
 import { showIndexFailure, showIndexSuccess } from '../AutoDismissAlert/messages'
 import Card from 'react-bootstrap/Card'
-
 // create index of all posts class and constructor with state
 class IndexAllPosts extends React.Component {
   constructor (props) {
@@ -75,6 +74,7 @@ class IndexAllPosts extends React.Component {
       <div>
         <h1>Post</h1>
         <p>{this.state.loading && 'loading ...'}</p>
+
         {/* display posts */}
         <ul>{postJsx}</ul>
       </div>
