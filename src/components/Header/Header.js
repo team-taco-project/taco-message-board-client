@@ -9,13 +9,13 @@ import './Header.scss'
 const authenticatedOptions = (
   <Fragment>
     <NavLink to='/change-password' className='nav-link' id='text-bar'>
-        Change Password
+            Change Password
     </NavLink>
     <NavLink to='/create-post' className='nav-link' id='text-bar'>
-        Create Post
+            Create Post
     </NavLink>
     <NavLink to='/sign-out' className='nav-link' id='text-bar'>
-        Sign Out
+            Sign Out
     </NavLink>
   </Fragment>
 )
@@ -23,7 +23,7 @@ const authenticatedOptions = (
 const unauthenticatedOptions = (
   <Fragment>
     <NavLink to='/sign-up' className='nav-link' id='text-bar'>
-        Sign Up
+          Sign Up
     </NavLink>
     <NavLink to='/sign-in' className='nav-link' id='text-bar'>
         Sign In
@@ -36,9 +36,9 @@ const alwaysOptions = (
     <NavLink
       exact
       to='/posts-all'
-      className='nav-link justify-content-center'
+      className='nav-link'
       id='text-bar'>
-        Home
+                        Home
     </NavLink>
   </Fragment>
 )

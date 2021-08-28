@@ -3,6 +3,7 @@ import { withRouter, Link } from 'react-router-dom'
 import { indexAllPosts } from '../../api/post'
 import { showIndexFailure, showIndexSuccess } from '../AutoDismissAlert/messages'
 import Card from 'react-bootstrap/Card'
+import './post.scss'
 // create index of all posts class and constructor with state
 class IndexAllPosts extends React.Component {
   constructor (props) {
@@ -54,25 +55,29 @@ class IndexAllPosts extends React.Component {
       // create list of posts
       postJsx = this.state.post.map((post) => (
         <li key={post._id}>
-          <Card style={{ width: '100%' }}>
-            <Card.Body>
-              <Link to={`/post/${post._id}`}>
-                <Card.Title>{post.title}</Card.Title>
+          <Card className='box-post' style={{ width: '80%' }}>
+            <Card.Body className="bg-box">
+              <Link className="link-title" to={`/post/${post._id}`}>
+                <Card.Title className='title-post'>{post.title}</Card.Title>
               </Link>
               <Card.Subtitle className='mb-2 text-muted'>
                 {post.subject}
               </Card.Subtitle>
               <Card.Text>{post.content}</Card.Text>
-              <Link to={`/post/${post._id}/edit`}>update</Link>
+              <Link to={`/post/${post._id}/edit`}>
+                <button type='button' className='btn btn-outline-secondary'>
+                    Edit
+                </button>
+              </Link>
             </Card.Body>
-
           </Card>
+          <br></br>
         </li>
       ))
     }
     return (
       <div>
-        <h1>Post</h1>
+        <h1 className="topic">All Posts Here</h1>
         <p>{this.state.loading && 'loading ...'}</p>
 
         {/* display posts */}
