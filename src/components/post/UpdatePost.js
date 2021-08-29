@@ -46,6 +46,7 @@ class UpdatePost extends Component {
         return { post: { ...currState.post, ...userInput } }
       })
     }
+
     // updates post on click
     onUpdatePost = (event) => {
       // prevent page reload
@@ -68,6 +69,7 @@ class UpdatePost extends Component {
           })
         })
     }
+
     render () {
       // destructuring state of post for later use
       const { title, subject, content, image } = this.state.post

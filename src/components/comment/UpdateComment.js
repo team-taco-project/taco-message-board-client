@@ -31,7 +31,6 @@ class UpdateComment extends Component {
   }
 
   onUpdateComment = (event) => {
-
     // prevent page reload
     event.preventDefault()
     // deconstructing props for later use

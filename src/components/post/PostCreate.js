@@ -22,7 +22,6 @@ class CreatePost extends Component {
     }
   }
 
-
   // sets state of userEmail on page load
   componentDidMount () {
     this.setState({ userEmail: this.props.user.email })
