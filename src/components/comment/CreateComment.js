@@ -1,10 +1,12 @@
 import React, { Component } from 'react'
-import { withRouter } from 'react-router-dom'
+import { withRouter, Link } from 'react-router-dom'
+
 
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 import { createCommentSuccess, createCommentFailure } from '../AutoDismissAlert/messages'
 import { createComment } from '../../api/comment'
+import './comment.scss'
 
 // create create comment class with constructor and state
 class CreateComment extends Component {
@@ -75,7 +77,6 @@ class CreateComment extends Component {
               <Form.Group controlId='image'>
                 <Form.Label>Image</Form.Label>
                 <Form.Control
-
                   name='image'
                   value={image}
                   placeholder='image'
@@ -83,10 +84,11 @@ class CreateComment extends Component {
                 />
               </Form.Group>
 
+              {/* button submit create comment */}
               <Button variant='primary' type='submit'>
-                      Submit
+                      Create Comment
               </Button>
-
+              <Link to={'/posts-all'} className="btn btn-primary">Cancel</Link>
             </Form>
           </div>
         </div>

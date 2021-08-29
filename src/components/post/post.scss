@@ -1,0 +1,30 @@
+.topic {
+display: flex;
+color: white;
+font-weight: 200;
+justify-content: center;
+}
+.box-post {
+display:flex;
+margin-left: 50px;
+background: rgba(51, 170, 51, .1);  
+}
+.bg-box {
+ display: inline-block;
+ color: white;
+}
+.link-title {
+    color:white;
+}
+.link-title:hover {
+    color:greenyellow;
+}
+.divider{
+    width:10px;
+    height:auto;
+    display:inline-block;
+}
+#showPost {
+    background: rgba(51, 170, 51, .1);  
+    color: white;
+}

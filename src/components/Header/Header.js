@@ -2,37 +2,54 @@ import React, { Fragment } from 'react'
 import Nav from 'react-bootstrap/Nav'
 import Navbar from 'react-bootstrap/Navbar'
 import { NavLink } from 'react-router-dom'
+import './Header.scss'
+
+// import styled from 'styled-components'
 
 // options available for authenticated user
 const authenticatedOptions = (
   <Fragment>
-    <NavLink to='/change-password' className='nav-link'>
-        Change Password
+    <NavLink to='/change-password' className='nav-link' id='text-bar'>
+            Change Password
     </NavLink>
-    <NavLink to='/create-post' className='nav-link'>
-        Create Post
+    <NavLink to='/create-post' className='nav-link' id='text-bar'>
+            Create Post
     </NavLink>
-    <NavLink to='/sign-out' className='nav-link'>
-        Sign Out
+    <NavLink to='/sign-out' className='nav-link' id='text-bar'>
+            Sign Out
     </NavLink>
   </Fragment>
 )
 // options available for unauthenticated user
 const unauthenticatedOptions = (
   <Fragment>
-    <NavLink to='/sign-up' className='nav-link'>Sign Up</NavLink>
-    <NavLink to='/sign-in' className='nav-link'>Sign In</NavLink>
+    <NavLink to='/sign-up' className='nav-link' id='text-bar'>
+          Sign Up
+    </NavLink>
+    <NavLink to='/sign-in' className='nav-link' id='text-bar'>
+        Sign In
+    </NavLink>
   </Fragment>
 )
 // options available regardless of authentication
 const alwaysOptions = (
   <Fragment>
-    <NavLink exact to='/posts-all' className='nav-link'>Home</NavLink>
+    <NavLink
+      exact
+      to='/posts-all'
+      className='nav-link'
+      id='text-bar'>
+        List of Posts
+    </NavLink>
   </Fragment>
 )
 
 const Header = ({ user }) => (
-  <Navbar bg='primary' variant='dark' expand='md'>
+  <Navbar
+    className='navbar1'
+    variant='dark'
+    expand='md'
+    padding="right">
     <Navbar.Toggle aria-controls='basic-navbar-nav' />
     <Navbar.Collapse id='basic-navbar-nav'>
       <Nav className='ml-auto'>

@@ -26,11 +26,11 @@ export const deleteComment = (postId, commentId, user) => {
 }
 
 // PATCH /Posts/:id, requires token
-export const updateComment = (data, postId, commentId, user) => {
+export const updateComment = (data, commentId, postId, user) => {
   return axios({
     url: apiUrl + '/post/' + postId + '/' + commentId,
     method: 'PATCH',
-    data: { post: data },
+    data: { comment: data },
     headers: {
       Authorization: `Bearer ${user.token}`
     }
