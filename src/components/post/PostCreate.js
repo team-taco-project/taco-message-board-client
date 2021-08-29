@@ -7,6 +7,7 @@ import Button from 'react-bootstrap/Button'
 import { createPost } from '../../api/post'
 import { createPostSuccess, createPostFailure } from '../AutoDismissAlert/messages'
 import './post.scss'
+
 // create create post class, constructor and state
 class CreatePost extends Component {
   constructor (props) {
@@ -20,6 +21,7 @@ class CreatePost extends Component {
       userEmail: ''
     }
   }
+
 
   // sets state of userEmail on page load
   componentDidMount () {
@@ -119,6 +121,7 @@ class CreatePost extends Component {
                             <br />
                             <div className='d-grid gap-2 col-6 mx-auto'>
                               <Button variant='primary' type='submit'>
+
                                 Submit
                               </Button>
                             </div>

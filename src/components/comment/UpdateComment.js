@@ -2,11 +2,11 @@ import React, { Component } from 'react'
 import { withRouter, Link } from 'react-router-dom'
 // API request
 import { updateComment } from '../../api/comment'
-
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 import { updateCommentSuccess, updateCommentFailure } from '../AutoDismissAlert/messages'
 import './comment.scss'
+
 // create update comment class -- under construction
 class UpdateComment extends Component {
   constructor (props) {
@@ -31,11 +31,13 @@ class UpdateComment extends Component {
   }
 
   onUpdateComment = (event) => {
+
     // prevent page reload
     event.preventDefault()
     // deconstructing props for later use
     const { user, msgAlert, history, match } = this.props
     // update comment API call
+
     updateComment(this.state.comment, match.params.id, match.params.postId, user)
       .then(() => msgAlert({
         heading: 'Comment Updated!',
@@ -62,6 +64,7 @@ class UpdateComment extends Component {
         <div className='row' id="showPost">
           <div className='col-sm-10 col-md-8 mx-auto mt-5'>
             <h3 className='register'>Update Comment</h3>
+
             <Form onSubmit={this.onUpdateComment}>
               <Form.Group controlId='text'>
                 <Form.Label>Comment Text</Form.Label>

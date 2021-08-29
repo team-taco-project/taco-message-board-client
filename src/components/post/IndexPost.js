@@ -1,9 +1,11 @@
 import React from 'react'
 import { withRouter, Link } from 'react-router-dom'
 import { indexAllPosts } from '../../api/post'
+
 import { showIndexFailure } from '../AutoDismissAlert/messages'
 import Card from 'react-bootstrap/Card'
 import './post.scss'
+
 // create index of all posts class and constructor with state
 class IndexAllPosts extends React.Component {
   constructor (props) {
@@ -19,6 +21,7 @@ class IndexAllPosts extends React.Component {
     const { msgAlert } = this.props
     // API call for index of all posts
     indexAllPosts()
+
       .then((response) =>
         this.setState({
           post: response.data.posts,

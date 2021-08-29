@@ -6,9 +6,11 @@ import { changePasswordSuccess, changePasswordFailure } from '../AutoDismissAler
 
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
+
 import './auth.scss'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faKey } from '@fortawesome/free-solid-svg-icons'
+
 // create change password component
 class ChangePassword extends Component {
   constructor (props) {
@@ -57,7 +59,6 @@ class ChangePassword extends Component {
   render () {
   // destructuring of passwords for later use
     const { oldPassword, newPassword } = this.state
-
     return (
       <div className='row'>
         <div className='col-sm-10 col-md-8 mx-auto mt-5'>

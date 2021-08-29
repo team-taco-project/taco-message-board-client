@@ -5,6 +5,7 @@ import { NavLink } from 'react-router-dom'
 import './Header.scss'
 
 // import styled from 'styled-components'
+
 // options available for authenticated user
 const authenticatedOptions = (
   <Fragment>
