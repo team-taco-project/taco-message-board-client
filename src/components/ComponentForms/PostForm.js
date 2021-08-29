@@ -6,9 +6,15 @@ import '../post/post.scss'
 // create show post format
 const Post = (props) => (
   <Fragment>
-    <Card style={{ width: '100%' }}>
+    <Card id='showPost-bg' style={{ width: '100%' }}>
       <Card.Body>
-
+  
+        <center>
+          <h2 className='register'> {props.title}</h2>{' '}
+        </center>
+        <h6>Subject : {props.subject}</h6>
+        <Card.Text>{props.content}</Card.Text>
+        <h6>Image : </h6>
         <h3>Post</h3>
         <h5>Title</h5>
         <Card.Title>{props.title}</Card.Title>
