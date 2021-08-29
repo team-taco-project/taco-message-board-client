@@ -29,7 +29,7 @@ export const indexPosts = (user) => {
   })
 }
 // index all posts, no token needed.  Anyone can view posts.
-export const indexAllPosts = (user) => {
+export const indexAllPosts = () => {
   return axios({
     // method key sets the HTTP verb/method for this request
     // GET is the default method, so we can include or not up to us

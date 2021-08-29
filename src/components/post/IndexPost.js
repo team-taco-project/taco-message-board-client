@@ -16,9 +16,9 @@ class IndexAllPosts extends React.Component {
 
   // occurs on page render first time
   componentDidMount () {
-    const { user, msgAlert } = this.props
+    const { msgAlert } = this.props
     // API call for index of all posts
-    indexAllPosts(user)
+    indexAllPosts()
       .then((response) =>
         this.setState({
           post: response.data.posts,
@@ -60,15 +60,13 @@ class IndexAllPosts extends React.Component {
               <Link className="link-title" to={`/post/${post._id}`}>
                 <Card.Title className='title-post'>{post.title}</Card.Title>
               </Link>
+              <h5>Subject</h5>
               <Card.Subtitle className='mb-2 text-muted'>
                 {post.subject}
               </Card.Subtitle>
+              <h5>Text</h5>
               <Card.Text>{post.content}</Card.Text>
-              <Link to={`/post/${post._id}/edit`}>
-                <button type='button' className='btn btn-outline-secondary'>
-                    Edit
-                </button>
-              </Link>
+              <Link to={`/post/${post._id}/edit`} className="btn btn-outline-secondary">Update Post</Link>
             </Card.Body>
           </Card>
           <br></br>
@@ -81,7 +79,7 @@ class IndexAllPosts extends React.Component {
         <p>{this.state.loading && 'loading ...'}</p>
 
         {/* display posts */}
-        <ul>{postJsx}</ul>
+        <ul>{postJsx.reverse()}</ul>
       </div>
     )
   }

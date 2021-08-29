@@ -50,84 +50,75 @@ class ShowPost extends Component {
       )
   }
 
-      handleDeletePost = (event) => {
-        const { match, user, msgAlert, history } = this.props
-        deletePost(match.params.id, user)
-          // Redirect to the list of posts
-          .then(() => history.push('/posts-all'))
-          .then(() =>
-            msgAlert({
-              heading: 'Delete post successfully',
-              message: deletePostSuccess,
-              variant: 'success'
-            })
-          )
-          .catch(() =>
-            msgAlert({
-              heading: 'Delete post failed :(',
-              message: deletePostFailure,
-              variant: 'danger'
-            })
-          )
-      }
+  handleDeletePost = (event) => {
+    const { match, user, msgAlert, history } = this.props
+    deletePost(match.params.id, user)
+      .then(() =>
+        msgAlert({
+          heading: 'Delete post successfully',
+          message: deletePostSuccess,
+          variant: 'success'
+        })
+      )
+      // Redirect to the list of posts
+      .then(() => history.push('/posts-all'))
+      .catch(() =>
+        msgAlert({
+          heading: 'Delete post failed :(',
+          message: deletePostFailure,
+          variant: 'danger'
+        })
+      )
+  }
 
-      // handles delete comment
-        handleDeleteComment = (_id) => {
-          // destructuring props for later use
-          const { match, user, msgAlert, history } = this.props
-          // delete comment API call
-          deleteComment(match.params.id, _id, user)
-            .then(() =>
-              msgAlert({
-                heading: 'Delete comment successfully',
-                message: deleteCommentSuccess,
-                variant: 'success'
-              })
-            )
-            // Redirect to the list of posts
-            .then(() => history.push('/post/:id'))
-            .catch(() =>
-              msgAlert({
-                heading: 'Delete post failed :(',
-                message: deleteCommentFailure,
-                variant: 'danger'
-              })
-            )
-        }
+  // handles delete comment
+    handleDeleteComment = (_id) => {
+      // destructuring props for later use
+      const { match, user, msgAlert, history } = this.props
+      // delete comment API call
+      deleteComment(match.params.id, _id, user)
+        .then(() =>
+          msgAlert({
+            heading: 'Delete comment successfully',
+            message: deleteCommentSuccess,
+            variant: 'success'
+          })
+        )
+        // Redirect to the list of posts
+        .then(() => history.push('/posts-all'))
+        .catch(() =>
+          msgAlert({
+            heading: 'Delete post failed :(',
+            message: deleteCommentFailure,
+            variant: 'danger'
+          })
+        )
+    }
 
-        render () {
-          // deconstructing state of post for later use
-          const { title, subject, content, image, comments, _id } = this.state.post
-          return (
-            <div>
-              {/* bringing in the component Post that is accepting passed down data as props */}
-              <br></br>
-              <Post
-                title={title}
-                subject={subject}
-                content={content}
-                image={image}
-                comments={comments}
-                postId={_id}
-                // our functions are passed to PostForm
-                onClick={this.handleDeleteComment}
-                onClickUpdate={this.handleUpdateComment}
-              />
-              <br />
-              {/* button to delete post */}
-              <Button class='btn btn-danger' onClick={this.handleDeletePost}>
-                Delete Post
-              </Button>
-              {/* create comment */}
-              <div className='divider' />
-              <Link to={`/comments/${_id}`}>
-                <button type='button' className='btn btn-primary'>
-                  Comment Post
-                </button>
-              </Link>
-            </div>
-          )
-        }
+    render () {
+      // deconstructing state of post for later use
+      const { title, subject, content, image, comments, _id } = this.state.post
+      return (
+        <>
+          {/* bringing in the component Post that is accepting passed down data as props */}
+          <Post
+            title={title}
+            subject={subject}
+            content={content}
+            image={image}
+            comments={comments}
+            postId={_id}
+            // our functions are passed to PostForm
+            onClick={this.handleDeleteComment}
+            onClickUpdate={this.handleUpdateComment}
+          />
+          {/* button to delete post */}
+          <Button onClick={this.handleDeletePost}>Delete</Button>
+          {/* create comment */}
+          <Link to={`/comments/${_id}`} className="btn btn-primary">MakeComment</Link>
+        </>
+      )
+    }
 }
 
 export default withRouter(ShowPost)

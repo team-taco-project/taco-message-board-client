@@ -17,6 +17,7 @@ import ShowPost from './components/post/ShowPost'
 import UpdatePost from './components/post/UpdatePost'
 import CreateComment from './components/comment/CreateComment'
 import UpdateComment from './components/comment/UpdateComment'
+
 // create app class with constructor and state
 class App extends Component {
   constructor (props) {
@@ -84,7 +85,7 @@ class App extends Component {
           />
           <Route
             path='/posts-all'
-            render={() => <IndexAllPosts msgAlert={this.msgAlert} />}
+            render={() => <IndexAllPosts msgAlert={this.msgAlert} user={this.user} />}
           />
 
           {/* authenticated post routes */}

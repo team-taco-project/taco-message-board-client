@@ -75,16 +75,15 @@ class CreateComment extends Component {
               <Form.Group controlId='image'>
                 <Form.Label>Image</Form.Label>
                 <Form.Control
-
                   name='image'
                   value={image}
                   placeholder='image'
                   onChange={this.handleChange}
                 />
               </Form.Group>
-
+              {/* button submit create comment */}
               <Button variant='primary' type='submit'>
-                      Submit
+                      Create Comment
               </Button>
 
             </Form>
