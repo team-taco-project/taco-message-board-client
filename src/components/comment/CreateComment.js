@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { withRouter } from 'react-router-dom'
+import { withRouter, Link } from 'react-router-dom'
 
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
@@ -85,7 +85,7 @@ class CreateComment extends Component {
               <Button variant='primary' type='submit'>
                       Create Comment
               </Button>
-
+              <Link to={'/posts-all'} className="btn btn-primary">Cancel</Link>
             </Form>
           </div>
         </div>

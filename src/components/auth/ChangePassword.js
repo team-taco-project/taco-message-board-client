@@ -42,7 +42,7 @@ class ChangePassword extends Component {
         })
       )
     // returns to homepage
-      .then(() => history.push('/'))
+      .then(() => history.push('/posts-all'))
       .catch((error) => {
       // sets clears old and new password state if error
         this.setState({ oldPassword: '', newPassword: '' })

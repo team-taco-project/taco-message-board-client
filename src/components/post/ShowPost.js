@@ -6,7 +6,7 @@ import { deleteComment } from '../../api/comment'
 import Button from 'react-bootstrap/Button'
 import Post from '../ComponentForms/PostForm'
 import {
-  showPostFailure, showPostSuccess, deletePostSuccess,
+  showPostFailure, deletePostSuccess,
   deletePostFailure, deleteCommentSuccess, deleteCommentFailure
 } from '../AutoDismissAlert/messages'
 import './post.scss'
@@ -34,13 +34,13 @@ class ShowPost extends Component {
     showPost(match.params.id, user)
       // sets state of post
       .then((res) => this.setState({ post: res.data.post }))
-      .then(() =>
-        msgAlert({
-          heading: 'Show post success',
-          message: showPostSuccess,
-          variant: 'success'
-        })
-      )
+      // .then(() =>
+      //   msgAlert({
+      //     heading: 'Show post success',
+      //     message: showPostSuccess,
+      //     variant: 'success'
+      //   })
+      // )
       .catch(() =>
         msgAlert({
           heading: 'Show post failed :(',

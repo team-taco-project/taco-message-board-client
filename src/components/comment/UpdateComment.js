@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { withRouter } from 'react-router-dom'
+import { withRouter, Link } from 'react-router-dom'
 // API request
 import { updateComment } from '../../api/comment'
 
@@ -83,6 +83,7 @@ class UpdateComment extends Component {
               <Button variant='primary' type='submit'>
                     Submit
               </Button>
+              <Link to={'/posts-all'} className="btn btn-primary">Cancel</Link>
             </Form>
           </div>
         </div>

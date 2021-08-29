@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { withRouter } from 'react-router-dom'
+import { withRouter, Link } from 'react-router-dom'
 // API request
 import { updatePost, showPost } from '../../api/post'
 import { updatePostSuccess, updatePostFailure } from '../AutoDismissAlert/messages'
@@ -123,6 +123,7 @@ class UpdatePost extends Component {
                     Submit
                   </Button>
                 </div>
+                <Link to={'/posts-all'} className="btn btn-primary">Cancel</Link>
               </Form>
             </div>
           </div>
