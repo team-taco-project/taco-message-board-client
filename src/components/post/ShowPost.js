@@ -6,7 +6,7 @@ import { deleteComment } from '../../api/comment'
 import Button from 'react-bootstrap/Button'
 import Post from '../ComponentForms/PostForm'
 import {
-  showPostFailure, showPostSuccess, deletePostSuccess,
+  showPostFailure, deletePostSuccess,
   deletePostFailure, deleteCommentSuccess, deleteCommentFailure
 } from '../AutoDismissAlert/messages'
 import './post.scss'
@@ -21,6 +21,7 @@ class ShowPost extends Component {
         subject: '',
         content: '',
         image: '',
+        userEmail: '',
         comments: []
       }
     }
@@ -34,13 +35,13 @@ class ShowPost extends Component {
     showPost(match.params.id, user)
       // sets state of post
       .then((res) => this.setState({ post: res.data.post }))
-      .then(() =>
-        msgAlert({
-          heading: 'Show post success',
-          message: showPostSuccess,
-          variant: 'success'
-        })
-      )
+      // .then(() =>
+      //   msgAlert({
+      //     heading: 'Show post success',
+      //     message: showPostSuccess,
+      //     variant: 'success'
+      //   })
+      // )
       .catch(() =>
         msgAlert({
           heading: 'Show post failed :(',
@@ -85,7 +86,7 @@ class ShowPost extends Component {
         })
       )
     // Redirect to the list of posts
-      .then(() => history.push(`/post/${_id}`))
+      .then(() => history.push('/posts-all/'))
       .catch(() =>
         msgAlert({
           heading: 'Delete post failed :(',
@@ -97,17 +98,18 @@ class ShowPost extends Component {
 
   render () {
     // deconstructing state of post for later use
-    const { title, subject, content, image, comments, _id } = this.state.post
+    const { title, subject, content, image, comments, _id, userEmail } = this.state.post
     return (
       <div>
         {/* bringing in the component Post that is accepting passed down data as props */}
-        <br></br>
-        <Post
+        <br />
+        <Post id="showPost-bg"
           title={title}
           subject={subject}
           content={content}
           image={image}
           comments={comments}
+          userEmail={userEmail}
           postId={_id}
           // our functions are passed to PostForm
           onClick={this.handleDeleteComment}
@@ -124,7 +126,7 @@ class ShowPost extends Component {
         {/* create comment */}
         <div className='divider' />
         <Link to={`/comments/${_id}`} class='btn btn-secondary'>
-          Comment Post
+          Make Comment
         </Link>
       </div>
     )

@@ -55,7 +55,7 @@ class App extends Component {
     // displays header
     return (
       <Fragment>
-        <Link to="/posts-all">
+        <Link to='/posts-all'>
           <img
             src='https://i.imgur.com/tw8ziCS.png'
             alt='Taco-message-board'
@@ -89,7 +89,9 @@ class App extends Component {
           />
           <Route
             path='/posts-all'
-            render={() => <IndexAllPosts msgAlert={this.msgAlert} />}
+            render={() => (
+              <IndexAllPosts msgAlert={this.msgAlert} user={this.user} />
+            )}
           />
 
           {/* authenticated post routes */}

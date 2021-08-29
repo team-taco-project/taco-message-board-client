@@ -1,9 +1,10 @@
 import React from 'react'
 import { withRouter, Link, NavLink } from 'react-router-dom'
 import { indexAllPosts } from '../../api/post'
-import { showIndexFailure, showIndexSuccess } from '../AutoDismissAlert/messages'
+import { showIndexFailure } from '../AutoDismissAlert/messages'
 import Card from 'react-bootstrap/Card'
 import './post.scss'
+import './IndexPost.scss'
 // create index of all posts class and constructor with state
 class IndexAllPosts extends React.Component {
   constructor (props) {
@@ -25,13 +26,13 @@ class IndexAllPosts extends React.Component {
           loading: false
         })
       )
-      .then(() =>
-        msgAlert({
-          heading: 'Index Success',
-          message: showIndexSuccess,
-          variant: 'success'
-        })
-      )
+      // .then(() =>
+      //   msgAlert({
+      //     heading: 'Index Success',
+      //     message: showIndexSuccess,
+      //     variant: 'success'
+      //   })
+      // )
       .catch(() =>
         msgAlert({
           heading: 'Index Fail',
@@ -60,12 +61,16 @@ class IndexAllPosts extends React.Component {
               <Link className='link-title' to={`/post/${post._id}`}>
                 <Card.Title className='title-post'>{post.title}</Card.Title>
               </Link>
+              <h6>created by: {post.userEmail} </h6>
+
               <Card.Subtitle className='mb-2 text-muted'>
                 {post.subject}
               </Card.Subtitle>
               <Card.Text>{post.content}</Card.Text>
-              <Link to={`/post/${post._id}/edit`} className='btn btn-outline-secondary'>
-                        EDIT
+              <Link
+                to={`/post/${post._id}/edit`}
+                className='btn btn-outline-secondary'>
+                    Update Post
               </Link>
             </Card.Body>
           </Card>
@@ -75,16 +80,16 @@ class IndexAllPosts extends React.Component {
     }
     return (
       <div>
-        <center>
-          <br />
-          <h1 className='topic'>Share your thought ..</h1>
-        </center>
+
+        <br />
+        <h1 className='topic'>Share your thought ..</h1>
+
         <NavLink to='/create-post'>
           <button
             type='button'
             className='btn btn-secondary btn-lg'
             id='create-btn'>
-              Create Post
+                      Create Post
           </button>
         </NavLink>
         <p>{this.state.loading && 'loading ...'}</p>

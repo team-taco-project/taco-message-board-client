@@ -26,7 +26,7 @@ export const deleteComment = (postId, commentId, user) => {
 }
 
 // PATCH /Posts/:id, requires token
-export const updateComment = (data, postId, commentId, user) => {
+export const updateComment = (data, commentId, postId, user) => {
   return axios({
     url: apiUrl + '/comments/' + postId + '/' + commentId,
     method: 'PATCH',

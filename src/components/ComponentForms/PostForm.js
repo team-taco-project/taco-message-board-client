@@ -6,16 +6,15 @@ import '../post/post.scss'
 // create show post format
 const Post = (props) => (
   <Fragment>
-    <Card style={{ width: '100%' }}>
+    <Card id='showPost-bg' style={{ width: '100%' }}>
       <Card.Body>
-        <Card.Title>{props.title}</Card.Title>
-        <Card.Subtitle className='mb-2 text-muted'>
-          {props.subject}
-        </Card.Subtitle>
+        <center>
+          <h2 className='register'> {props.title}</h2>{' '}
+        </center>
+        <h6>Subject : {props.subject}</h6>
         <Card.Text>{props.content}</Card.Text>
+        <h6>Image : </h6>
         <Card.Text>{props.image}</Card.Text>
-        <Card.Text>post Id:{props.postId}</Card.Text>
-        {/* <Card.Text>{props.comments.map(comment => comment.text)}</Card.Text> */}
         <Card.Text>
           {props.comments.map(({ id, text, image, _id }) => (
             // passing props to comment form component
