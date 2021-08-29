@@ -16,7 +16,8 @@ class CreatePost extends Component {
       title: '',
       subject: '',
       content: '',
-      image: ''
+      image: '',
+      userEmail: ''
     }
   }
 
