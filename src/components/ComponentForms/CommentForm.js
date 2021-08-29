@@ -1,5 +1,6 @@
 import React from 'react'
 import Button from 'react-bootstrap/Button'
+import Card from 'react-bootstrap/Card'
 import { Link } from 'react-router-dom'
 // creating a component comment that accepts props it will be passed
 
@@ -10,8 +11,9 @@ const Comment = (props) => (
         Comment : <br />
       <p>{props.text}</p>
     </li>
-    <li>Image : {props.image}</li>
-    {/* here Comment is accepting onClick from props */}
+    <li>
+      <Card.Link href={props.image}>Image Link</Card.Link>
+    </li>
     <Button
       variant='light'
       className='btn btn-outline-danger'
