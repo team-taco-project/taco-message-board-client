@@ -2,7 +2,7 @@
 The app is a message board that allows the user to make, update and delete posts.  It also lets the user make, update and delete comments.  This is the code for the client side.
 # IMPORTANT LINKS
 - Other Repo [API REPO](https://github.com/team-taco-project/taco-message-board-API)
-- Deployed Client 
+- Deployed Client [DEPLOYED CLIENT](https://team-taco-project.github.io/taco-message-board-client/) 
 - Deployed API 
 
 # PLANNING STORY
