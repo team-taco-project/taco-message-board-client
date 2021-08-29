@@ -43,7 +43,6 @@ class UpdateComment extends Component {
         variant: 'success'
       }))
       // redirect on success
-      .then(res => console.log(match.params))
       .then(res => history.push(`/post/${match.params.postId}`))
       .catch(() => {
         msgAlert({
