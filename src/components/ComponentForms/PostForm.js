@@ -11,6 +11,10 @@ const Post = (props) => (
         <h3>Post</h3>
         <h5>Title</h5>
         <Card.Title>{props.title}</Card.Title>
+        <h6>User</h6>
+        <Card.Subtitle className='mb-2 text-muted'>
+          {props.userEmail}
+        </Card.Subtitle>
         <h6>Sub-Title</h6>
         <Card.Subtitle className='mb-2 text-muted'>
           {props.subject}

@@ -21,6 +21,7 @@ class ShowPost extends Component {
         subject: '',
         content: '',
         image: '',
+        userEmail: '',
         comments: []
       }
     }
@@ -97,7 +98,7 @@ class ShowPost extends Component {
 
     render () {
       // deconstructing state of post for later use
-      const { title, subject, content, image, comments, _id } = this.state.post
+      const { title, subject, content, image, comments, _id, userEmail } = this.state.post
       return (
         <>
           {/* bringing in the component Post that is accepting passed down data as props */}
@@ -107,6 +108,7 @@ class ShowPost extends Component {
             content={content}
             image={image}
             comments={comments}
+            userEmail={userEmail}
             postId={_id}
             // our functions are passed to PostForm
             onClick={this.handleDeleteComment}
