@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { withRouter } from 'react-router-dom'
+import { withRouter, Link } from 'react-router-dom'
 
 import { changePassword } from '../../api/auth'
 import { changePasswordSuccess, changePasswordFailure } from '../AutoDismissAlert/messages'
@@ -92,8 +92,9 @@ class ChangePassword extends Component {
             </Form.Group>
             <br></br>
             <Button variant='light' type='submit'>
-            Submit
+            Change Password
             </Button>
+            <Link to={'/posts-all'} className="btn btn-outline-light">Cancel</Link>
           </Form>
         </div>
       </div>

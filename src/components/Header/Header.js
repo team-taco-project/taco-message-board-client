@@ -38,7 +38,7 @@ const alwaysOptions = (
       to='/posts-all'
       className='nav-link'
       id='text-bar'>
-                        Home
+        List of Posts
     </NavLink>
   </Fragment>
 )
