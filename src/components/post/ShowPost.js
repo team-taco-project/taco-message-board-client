@@ -6,9 +6,10 @@ import { deleteComment } from '../../api/comment'
 import Button from 'react-bootstrap/Button'
 import Post from '../ComponentForms/PostForm'
 import {
-  showPostFailure, showPostSuccess, deletePostSuccess,
+  showPostFailure, deletePostSuccess,
   deletePostFailure, deleteCommentSuccess, deleteCommentFailure
 } from '../AutoDismissAlert/messages'
+import './post.scss'
 // creates single show post with constructor, state
 class ShowPost extends Component {
   constructor (props) {
@@ -20,6 +21,9 @@ class ShowPost extends Component {
         subject: '',
         content: '',
         image: '',
+
+        userEmail: '',
+
         comments: []
       }
     }
@@ -31,15 +35,15 @@ class ShowPost extends Component {
     const { match, user, msgAlert } = this.props
     // show post API call
     showPost(match.params.id, user)
-    // sets state of post
+      // sets state of post
       .then((res) => this.setState({ post: res.data.post }))
-      .then(() =>
-        msgAlert({
-          heading: 'Show post success',
-          message: showPostSuccess,
-          variant: 'success'
-        })
-      )
+      // .then(() =>
+      //   msgAlert({
+      //     heading: 'Show post success',
+      //     message: showPostSuccess,
+      //     variant: 'success'
+      //   })
+      // )
       .catch(() =>
         msgAlert({
           heading: 'Show post failed :(',
@@ -52,8 +56,6 @@ class ShowPost extends Component {
   handleDeletePost = (event) => {
     const { match, user, msgAlert, history } = this.props
     deletePost(match.params.id, user)
-      // Redirect to the list of posts
-      .then(() => history.push('/posts-all'))
       .then(() =>
         msgAlert({
           heading: 'Delete post successfully',
@@ -61,6 +63,9 @@ class ShowPost extends Component {
           variant: 'success'
         })
       )
+      // Redirect to the list of posts
+      .then(() => history.push('/posts-all'))
+
       .catch(() =>
         msgAlert({
           heading: 'Delete post failed :(',
@@ -84,7 +89,8 @@ class ShowPost extends Component {
           })
         )
         // Redirect to the list of posts
-        .then(() => history.push('/post/:id'))
+
+        .then(() => history.push('/posts-all'))
         .catch(() =>
           msgAlert({
             heading: 'Delete post failed :(',
@@ -96,7 +102,8 @@ class ShowPost extends Component {
 
     render () {
       // deconstructing state of post for later use
-      const { title, subject, content, image, comments, _id } = this.state.post
+      const { title, subject, content, image, comments, _id, userEmail } = this.state.post
+
       return (
         <>
           {/* bringing in the component Post that is accepting passed down data as props */}
@@ -106,15 +113,16 @@ class ShowPost extends Component {
             content={content}
             image={image}
             comments={comments}
+            userEmail={userEmail}
             postId={_id}
             // our functions are passed to PostForm
             onClick={this.handleDeleteComment}
             onClickUpdate={this.handleUpdateComment}
           />
           {/* button to delete post */}
-          <Button onClick={this.handleDeletePost}>Delete</Button>
+          <Button onClick={this.handleDeletePost}>Delete Post</Button>
           {/* create comment */}
-          <Link to={`/comments/${_id}`}>Comment</Link>
+          <Link to={`/comments/${_id}`} className="btn btn-primary">MakeComment</Link>
         </>
       )
     }

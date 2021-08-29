@@ -1,11 +1,12 @@
 import React, { Component } from 'react'
-import { withRouter } from 'react-router-dom'
+import { withRouter, Link } from 'react-router-dom'
 // API request
 import { updateComment } from '../../api/comment'
-
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 import { updateCommentSuccess, updateCommentFailure } from '../AutoDismissAlert/messages'
+import './comment.scss'
+
 // create update comment class -- under construction
 class UpdateComment extends Component {
   constructor (props) {
@@ -30,9 +31,12 @@ class UpdateComment extends Component {
   }
 
   onUpdateComment = (event) => {
+    // prevent page reload
     event.preventDefault()
-
+    // deconstructing props for later use
     const { user, msgAlert, history, match } = this.props
+    // update comment API call
+
     updateComment(this.state.comment, match.params.id, match.params.postId, user)
       .then(() => msgAlert({
         heading: 'Comment Updated!',
@@ -40,7 +44,7 @@ class UpdateComment extends Component {
         variant: 'success'
       }))
       // redirect on success
-      .then(res => history.push('/post/:id'))
+      .then(res => history.push(`/post/${match.params.postId}`))
       .catch(() => {
         msgAlert({
           heading: 'Comment update failed :(',
@@ -56,9 +60,10 @@ class UpdateComment extends Component {
     // update comment form
     return (
       <>
-        <div className='row'>
+        <div className='row' id="showPost">
           <div className='col-sm-10 col-md-8 mx-auto mt-5'>
-            <h3>Update Comment</h3>
+            <h3 className='register'>Update Comment</h3>
+
             <Form onSubmit={this.onUpdateComment}>
               <Form.Group controlId='text'>
                 <Form.Label>Comment Text</Form.Label>
@@ -78,9 +83,11 @@ class UpdateComment extends Component {
                   onChange={this.handleChange}
                 />
               </Form.Group>
+              <br/>
               <Button variant='primary' type='submit'>
                     Submit
               </Button>
+              <Link to={'/posts-all'} className="btn btn-primary">Cancel</Link>
             </Form>
           </div>
         </div>

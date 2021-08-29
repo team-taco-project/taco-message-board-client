@@ -2,7 +2,8 @@
 import React, { Component, Fragment } from 'react'
 import { Route } from 'react-router-dom'
 import { v4 as uuid } from 'uuid'
-
+import './App.scss'
+// import styled from 'styled-components'
 import AuthenticatedRoute from './components/AuthenticatedRoute/AuthenticatedRoute'
 import AutoDismissAlert from './components/AutoDismissAlert/AutoDismissAlert'
 import Header from './components/Header/Header'
@@ -16,6 +17,7 @@ import ShowPost from './components/post/ShowPost'
 import UpdatePost from './components/post/UpdatePost'
 import CreateComment from './components/comment/CreateComment'
 import UpdateComment from './components/comment/UpdateComment'
+
 // create app class with constructor and state
 class App extends Component {
   constructor (props) {
@@ -53,7 +55,8 @@ class App extends Component {
     // displays header
     return (
       <Fragment>
-        <p>title</p>
+        {/* <p className="nameLogo"></p> */}
+        <img src='https://i.imgur.com/tw8ziCS.png' alt="Taco-message-board" className='nameLogo'></img>
         <Header user={user} />
         {msgAlerts.map((msgAlert) => (
           <AutoDismissAlert
@@ -82,9 +85,8 @@ class App extends Component {
           />
           <Route
             path='/posts-all'
-            render={() => <IndexAllPosts msgAlert={this.msgAlert} />}
+            render={() => <IndexAllPosts msgAlert={this.msgAlert} user={this.user} />}
           />
-
           {/* authenticated post routes */}
           <AuthenticatedRoute
             user={user}
@@ -143,5 +145,4 @@ class App extends Component {
     )
   }
 }
-
 export default App
