@@ -113,7 +113,7 @@ class ShowPost extends Component {
             onClickUpdate={this.handleUpdateComment}
           />
           {/* button to delete post */}
-          <Button onClick={this.handleDeletePost}>Delete</Button>
+          <Button onClick={this.handleDeletePost}>Delete Post</Button>
           {/* create comment */}
           <Link to={`/comments/${_id}`} className="btn btn-primary">MakeComment</Link>
         </>

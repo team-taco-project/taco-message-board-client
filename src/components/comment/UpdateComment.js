@@ -31,9 +31,11 @@ class UpdateComment extends Component {
   }
 
   onUpdateComment = (event) => {
+    // prevent page reload
     event.preventDefault()
-
+    // deconstructing props for later use
     const { user, msgAlert, history, match } = this.props
+    // update comment API call
     updateComment(this.state.comment, match.params.id, match.params.postId, user)
       .then(() => msgAlert({
         heading: 'Comment Updated!',
@@ -41,7 +43,8 @@ class UpdateComment extends Component {
         variant: 'success'
       }))
       // redirect on success
-      .then(res => history.push('/post/:id'))
+      .then(res => console.log(match.params))
+      .then(res => history.push(`/post/${match.params.postId}`))
       .catch(() => {
         msgAlert({
           heading: 'Comment update failed :(',

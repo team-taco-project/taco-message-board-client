@@ -19,7 +19,6 @@ const Post = (props) => (
         <Card.Text>{props.content}</Card.Text>
         <h6>Image</h6>
         <Card.Text>{props.image}</Card.Text>
-        {/* <Card.Text>{props.comments.map(comment => comment.text)}</Card.Text> */}
         <Card.Text>
           {props.comments.map(({ id, text, image, _id }) => (
             // passing props to comment form component
