@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom'
 
 const Comment = (props) => (
   <ul>
+    <hr />
     <li>Comment: {props.text}</li>
     <li>Image: {props.image}</li>
     {/* here Comment is accepting onClick from props */}
