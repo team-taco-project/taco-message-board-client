@@ -1,20 +1,20 @@
 {
   "files": {
-    "main.css": "/taco-message-board-client/static/css/main.432dfbff.chunk.css",
-    "main.js": "/taco-message-board-client/static/js/main.c592b5e1.chunk.js",
-    "main.js.map": "/taco-message-board-client/static/js/main.c592b5e1.chunk.js.map",
+    "main.css": "/taco-message-board-client/static/css/main.71236084.chunk.css",
+    "main.js": "/taco-message-board-client/static/js/main.243eac66.chunk.js",
+    "main.js.map": "/taco-message-board-client/static/js/main.243eac66.chunk.js.map",
     "runtime-main.js": "/taco-message-board-client/static/js/runtime-main.09d92acf.js",
     "runtime-main.js.map": "/taco-message-board-client/static/js/runtime-main.09d92acf.js.map",
-    "static/js/2.2d5a2447.chunk.js": "/taco-message-board-client/static/js/2.2d5a2447.chunk.js",
-    "static/js/2.2d5a2447.chunk.js.map": "/taco-message-board-client/static/js/2.2d5a2447.chunk.js.map",
+    "static/js/2.f5c5fbb5.chunk.js": "/taco-message-board-client/static/js/2.f5c5fbb5.chunk.js",
+    "static/js/2.f5c5fbb5.chunk.js.map": "/taco-message-board-client/static/js/2.f5c5fbb5.chunk.js.map",
     "index.html": "/taco-message-board-client/index.html",
-    "static/css/main.432dfbff.chunk.css.map": "/taco-message-board-client/static/css/main.432dfbff.chunk.css.map",
-    "static/js/2.2d5a2447.chunk.js.LICENSE.txt": "/taco-message-board-client/static/js/2.2d5a2447.chunk.js.LICENSE.txt"
+    "static/css/main.71236084.chunk.css.map": "/taco-message-board-client/static/css/main.71236084.chunk.css.map",
+    "static/js/2.f5c5fbb5.chunk.js.LICENSE.txt": "/taco-message-board-client/static/js/2.f5c5fbb5.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.09d92acf.js",
-    "static/js/2.2d5a2447.chunk.js",
-    "static/css/main.432dfbff.chunk.css",
-    "static/js/main.c592b5e1.chunk.js"
+    "static/js/2.f5c5fbb5.chunk.js",
+    "static/css/main.71236084.chunk.css",
+    "static/js/main.243eac66.chunk.js"
   ]
 }
