@@ -21,37 +21,11 @@ class SignIn extends Component {
     }
   }
 
-// handles state change of input fields
-handleChange = (event) =>
-  this.setState({
-    [event.target.name]: event.target.value
-  })
-
-// handles sign in event
-onSignIn = (event) => {
-  // prevents page reload
-  event.preventDefault()
-  // destructuring of props for later use
-  const { msgAlert, history, setUser } = this.props
-  // sign in API call
-  signIn(this.state)
-    .then((res) => setUser(res.data.user))
-    .then(() =>
-      msgAlert({
-        heading: 'Sign In Success',
-        message: signInSuccess,
-        variant: 'success'
-      })
-    )
-    // send to post list when success
-    .then(() => history.push('/posts-all'))
-    .catch((error) => {
-      this.setState({ email: '', password: '' })
-      msgAlert({
-        heading: 'Sign In Failed with error: ' + error.message,
-        message: signInFailure,
-        variant: 'danger'
-      })
+  // handles state change of input fields
+  handleChange = (event) =>
+    this.setState({
+      [event.target.name]: event.target.value
+    })
 
     // handles sign in event
     onSignIn = (event) => {

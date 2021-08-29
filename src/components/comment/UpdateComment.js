@@ -19,7 +19,6 @@ class UpdateComment extends Component {
       }
     }
   }
-
     handleChange = (event) => {
       // because `this.state.comment` is an object with multiple keys, we have to do some fancy updating
       const userInput = { [event.target.name]: event.target.value }
@@ -32,7 +31,6 @@ class UpdateComment extends Component {
 
     onUpdateComment = (event) => {
       event.preventDefault()
-
       const { user, msgAlert, history, match } = this.props
       updateComment(this.state.comment, match.params.id, match.params.postId, user)
         .then(() => msgAlert({
