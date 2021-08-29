@@ -5,40 +5,36 @@ import { NavLink } from 'react-router-dom'
 import './Header.scss'
 
 // import styled from 'styled-components'
-
 // options available for authenticated user
 const authenticatedOptions = (
   <Fragment>
     <NavLink to='/change-password' className='nav-link' id='text-bar'>
-            Change Password
+                Change Password
     </NavLink>
-    <NavLink to='/create-post' className='nav-link' id='text-bar'>
-            Create Post
-    </NavLink>
+    {/* <NavLink to='/create-post' className='nav-link' id='text-bar'>
+                Create Post
+        </NavLink> */}
     <NavLink to='/sign-out' className='nav-link' id='text-bar'>
-            Sign Out
+                Sign Out
     </NavLink>
   </Fragment>
 )
 // options available for unauthenticated user
 const unauthenticatedOptions = (
   <Fragment>
+
     <NavLink to='/sign-up' className='nav-link' id='text-bar'>
           Sign Up
     </NavLink>
     <NavLink to='/sign-in' className='nav-link' id='text-bar'>
-        Sign In
+          Sign In
     </NavLink>
   </Fragment>
 )
 // options available regardless of authentication
 const alwaysOptions = (
   <Fragment>
-    <NavLink
-      exact
-      to='/posts-all'
-      className='nav-link'
-      id='text-bar'>
+    <NavLink exact to='/posts-all' className='nav-link' id='text-bar'>
         List of Posts
     </NavLink>
   </Fragment>
@@ -55,7 +51,7 @@ const Header = ({ user }) => (
       <Nav className='ml-auto'>
         {/* determines if user is logged in */}
         {user && (
-          <span className='navbar-text mr-2'>Welcome, {user.email}</span>
+          <span className='navbar-text mr-2' id="add-margin">Welcome, {user.email}</span>
         )}
         {alwaysOptions}
         {user ? authenticatedOptions : unauthenticatedOptions}

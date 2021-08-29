@@ -7,7 +7,6 @@ import { updatePostSuccess, updatePostFailure } from '../AutoDismissAlert/messag
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 import './post.scss'
-
 // create class for update post with constructor and state
 class UpdatePost extends Component {
   constructor (props) {
@@ -37,7 +36,7 @@ class UpdatePost extends Component {
         variant: 'danger'
       }))
   }
-
+  
     // handles state change for input
     handleChange = (event) => {
       const userInput = { [event.target.name]: event.target.value }
@@ -124,13 +123,10 @@ class UpdatePost extends Component {
                     Submit
                   </Button>
                 </div>
-                <Link to={'/posts-all'} className="btn btn-primary">Cancel</Link>
-              </Form>
-            </div>
-          </div>
-        </>
-      )
-    }
+              </div>
+            </>
+          )
+        }
 }
 
 export default withRouter(UpdatePost)
