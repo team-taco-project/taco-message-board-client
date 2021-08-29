@@ -19,6 +19,7 @@ class UpdateComment extends Component {
       }
     }
   }
+
     handleChange = (event) => {
       // because `this.state.comment` is an object with multiple keys, we have to do some fancy updating
       const userInput = { [event.target.name]: event.target.value }

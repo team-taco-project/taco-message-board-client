@@ -36,7 +36,7 @@ class UpdatePost extends Component {
         variant: 'danger'
       }))
   }
-  
+
     // handles state change for input
     handleChange = (event) => {
       const userInput = { [event.target.name]: event.target.value }
@@ -123,10 +123,13 @@ class UpdatePost extends Component {
                     Submit
                   </Button>
                 </div>
-              </div>
-            </>
-          )
-        }
+                <Link to={'/posts-all'} className="btn btn-primary">Cancel</Link>
+              </Form>
+            </div>
+          </div>
+        </>
+      )
+    }
 }
 
 export default withRouter(UpdatePost)

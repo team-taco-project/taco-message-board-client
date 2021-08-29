@@ -8,7 +8,6 @@ const Post = (props) => (
   <Fragment>
     <Card id='showPost-bg' style={{ width: '100%' }}>
       <Card.Body>
-  
         <center>
           <h2 className='register'> {props.title}</h2>{' '}
         </center>
