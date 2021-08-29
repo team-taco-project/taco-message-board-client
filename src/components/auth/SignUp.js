@@ -9,6 +9,7 @@ import Button from 'react-bootstrap/Button'
 import './auth.scss'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUserPlus } from '@fortawesome/free-solid-svg-icons'
+
 // create sign up class with constructor and state
 class SignUp extends Component {
   constructor (props) {

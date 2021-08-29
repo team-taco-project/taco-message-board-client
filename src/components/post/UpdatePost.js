@@ -7,6 +7,7 @@ import { updatePostSuccess, updatePostFailure } from '../AutoDismissAlert/messag
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 import './post.scss'
+
 // create class for update post with constructor and state
 class UpdatePost extends Component {
   constructor (props) {
@@ -45,7 +46,6 @@ class UpdatePost extends Component {
         return { post: { ...currState.post, ...userInput } }
       })
     }
-
     // updates post on click
     onUpdatePost = (event) => {
       // prevent page reload
@@ -68,7 +68,6 @@ class UpdatePost extends Component {
           })
         })
     }
-
     render () {
       // destructuring state of post for later use
       const { title, subject, content, image } = this.state.post
