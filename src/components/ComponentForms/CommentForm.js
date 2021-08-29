@@ -10,9 +10,9 @@ const Comment = (props) => (
       <Card.Text>
         {props.text}
       </Card.Text>
-      <Card.Text>
-        {props.image}
-      </Card.Text>
+      <Card.Link href={props.image}>
+        Image Link
+      </Card.Link>
       <Link to={`/comments/${props.postId}/${props._id}/`} className="btn btn-outline-dark">Update Comment</Link>
       <Button class='btn btn-outline-danger' onClick={() => props.onClick(props._id)}>Delete Comment</Button>
     </Card.Body>
