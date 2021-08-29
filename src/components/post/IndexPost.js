@@ -1,5 +1,5 @@
 import React from 'react'
-import { withRouter, Link } from 'react-router-dom'
+import { withRouter, Link, NavLink } from 'react-router-dom'
 import { indexAllPosts } from '../../api/post'
 import { showIndexFailure, showIndexSuccess } from '../AutoDismissAlert/messages'
 import Card from 'react-bootstrap/Card'
@@ -56,18 +56,16 @@ class IndexAllPosts extends React.Component {
       postJsx = this.state.post.map((post) => (
         <li key={post._id}>
           <Card className='box-post' style={{ width: '80%' }}>
-            <Card.Body className="bg-box">
-              <Link className="link-title" to={`/post/${post._id}`}>
+            <Card.Body className='bg-box'>
+              <Link className='link-title' to={`/post/${post._id}`}>
                 <Card.Title className='title-post'>{post.title}</Card.Title>
               </Link>
               <Card.Subtitle className='mb-2 text-muted'>
                 {post.subject}
               </Card.Subtitle>
               <Card.Text>{post.content}</Card.Text>
-              <Link to={`/post/${post._id}/edit`}>
-                <button type='button' className='btn btn-outline-secondary'>
-                    Edit
-                </button>
+              <Link to={`/post/${post._id}/edit`} className='btn btn-outline-secondary'>
+                        EDIT
               </Link>
             </Card.Body>
           </Card>
@@ -77,11 +75,22 @@ class IndexAllPosts extends React.Component {
     }
     return (
       <div>
-        <h1 className="topic">All Posts Here</h1>
+        <center>
+          <br />
+          <h1 className='topic'>Share your thought ..</h1>
+        </center>
+        <NavLink to='/create-post'>
+          <button
+            type='button'
+            className='btn btn-secondary btn-lg'
+            id='create-btn'>
+              Create Post
+          </button>
+        </NavLink>
         <p>{this.state.loading && 'loading ...'}</p>
 
         {/* display posts */}
-        <ul>{postJsx}</ul>
+        <ul>{postJsx.reverse()}</ul>
       </div>
     )
   }

@@ -58,12 +58,12 @@ class CreateComment extends Component {
     // create comment form
     return (
       <>
-        <div className='row'>
+        <div className='row' id="showPost">
           <div className='col-sm-10 col-md-8 mx-auto mt-5'>
-            <h3>Create Comment</h3>
+            <h3 className='register'>Create Comment</h3>
             <Form onSubmit={this.onCreateComment}>
               <Form.Group controlId='text'>
-                <Form.Label>Comment Text</Form.Label>
+                <Form.Label>Comment Text :</Form.Label>
                 <Form.Control
                   required
                   name='text'
@@ -82,8 +82,8 @@ class CreateComment extends Component {
                   onChange={this.handleChange}
                 />
               </Form.Group>
-
-              <Button variant='primary' type='submit'>
+              <br />
+              <Button variant='light' type='submit'>
                       Submit
               </Button>
 

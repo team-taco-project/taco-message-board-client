@@ -8,16 +8,14 @@ const Comment = (props) => (
     <li>Comment: {props.text}</li>
     <li>Image: {props.image}</li>
     {/* here Comment is accepting onClick from props */}
-    <Button
-      class='btn btn-outline-danger'
+    <Button variant="danger"
+      className='btn-primary'
       onClick={() => props.onClick(props._id)}>
         Delete
     </Button>
     <div className='divider' />
-    <Link to={`/comments/${props.postId}/${props._id}/`}>
-      <button type='button' className='btn btn-outline-dark'>
-          Update
-      </button>
+    <Link to={`/comments/${props.postId}/${props._id}/`} className='btn btn-outline-dark'>
+     Update
       {/* <Button onClick={() => props.onClickUpdate(props._id)}>Update</Button> */}
     </Link>
   </ul>

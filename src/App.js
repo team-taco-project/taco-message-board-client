@@ -1,6 +1,6 @@
 /* eslint-disable no-tabs */
 import React, { Component, Fragment } from 'react'
-import { Route } from 'react-router-dom'
+import { Route, Link } from 'react-router-dom'
 import { v4 as uuid } from 'uuid'
 import './App.scss'
 // import styled from 'styled-components'
@@ -17,6 +17,7 @@ import ShowPost from './components/post/ShowPost'
 import UpdatePost from './components/post/UpdatePost'
 import CreateComment from './components/comment/CreateComment'
 import UpdateComment from './components/comment/UpdateComment'
+import Footer from './components/Footer/Footer'
 // create app class with constructor and state
 class App extends Component {
   constructor (props) {
@@ -54,8 +55,12 @@ class App extends Component {
     // displays header
     return (
       <Fragment>
-        {/* <p className="nameLogo"></p> */}
-        <img src='https://i.imgur.com/tw8ziCS.png' alt="Taco-message-board" className='nameLogo'></img>
+        <Link to="/posts-all">
+          <img
+            src='https://i.imgur.com/tw8ziCS.png'
+            alt='Taco-message-board'
+            className='nameLogo'></img>
+        </Link>
         <Header user={user} />
         {msgAlerts.map((msgAlert) => (
           <AutoDismissAlert
@@ -139,8 +144,9 @@ class App extends Component {
               <UpdateComment msgAlert={this.msgAlert} user={user} />
             )}
           />
-
         </main>
+        <br />
+        <Footer />
       </Fragment>
     )
   }

@@ -1,7 +1,7 @@
 .topic {
 display: flex;
 color: white;
-font-weight: 200;
+font-weight: 00px;
 justify-content: center;
 }
 .box-post {
@@ -27,4 +27,9 @@ background: rgba(51, 170, 51, .1);
 #showPost {
     background: rgba(51, 170, 51, .1);  
     color: white;
+}
+#create-btn {
+    color: white;
+    margin-left: auto;
+    margin-inline-start: 42%;
 }

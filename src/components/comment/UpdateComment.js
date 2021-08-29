@@ -34,14 +34,14 @@ class UpdateComment extends Component {
     event.preventDefault()
 
     const { user, msgAlert, history, match } = this.props
-    updateComment(this.state.comment, match.params.id, match.params.postId, user)
+    updateComment(this.state.comment, match.params.postId, match.params.commentId, user)
       .then(() => msgAlert({
         heading: 'Comment Updated!',
         message: updateCommentSuccess,
         variant: 'success'
       }))
       // redirect on success
-      .then(res => history.push('/post/:id'))
+      .then(res => history.push('/post/' + match.params.id))
       .catch(() => {
         msgAlert({
           heading: 'Comment update failed :(',

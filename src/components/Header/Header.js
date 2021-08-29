@@ -11,9 +11,9 @@ const authenticatedOptions = (
     <NavLink to='/change-password' className='nav-link' id='text-bar'>
             Change Password
     </NavLink>
-    <NavLink to='/create-post' className='nav-link' id='text-bar'>
+    {/* <NavLink to='/create-post' className='nav-link' id='text-bar'>
             Create Post
-    </NavLink>
+    </NavLink> */}
     <NavLink to='/sign-out' className='nav-link' id='text-bar'>
             Sign Out
     </NavLink>
