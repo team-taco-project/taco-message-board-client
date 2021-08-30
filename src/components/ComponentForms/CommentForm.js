@@ -1,6 +1,6 @@
 import React from 'react'
 import Button from 'react-bootstrap/Button'
-import Card from 'react-bootstrap/Card'
+// import Card from 'react-bootstrap/Card'
 import { Link } from 'react-router-dom'
 // creating a component comment that accepts props it will be passed
 
