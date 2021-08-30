@@ -62,7 +62,7 @@ class CreatePost extends Component {
 
     render () {
       // destructuring state for later use
-      const { title, subject, content, image } = this.state
+      const { title, subject, content } = this.state
       // create create post form
       return (
         <>
@@ -106,7 +106,7 @@ class CreatePost extends Component {
                     onChange={this.handleChange}
                   />
                 </Form.Group>
-                <Form.Group controlId='image'>
+                {/* <Form.Group controlId='image'>
                   <Form.Label>Image</Form.Label>
                   <Form.Control
                     name='image'
@@ -114,7 +114,7 @@ class CreatePost extends Component {
                     placeholder='image'
                     onChange={this.handleChange}
                   />
-                </Form.Group>
+                </Form.Group> */}
                 <br />
                 <div className='d-grid gap-2 col-6 mx-auto'>
                   <Button variant='btn btn-secondary' type='submit'>

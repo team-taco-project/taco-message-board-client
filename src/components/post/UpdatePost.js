@@ -71,7 +71,7 @@ class UpdatePost extends Component {
 
         render () {
           // destructuring state of post for later use
-          const { title, subject, content, image } = this.state.post
+          const { title, subject, content } = this.state.post
           // update post form
           return (
             <>
@@ -108,7 +108,7 @@ class UpdatePost extends Component {
                         onChange={this.handleChange}
                       />
                     </Form.Group>
-                    <Form.Group controlId='image'>
+                    {/* <Form.Group controlId='image'>
                       <Form.Label>Image :</Form.Label>
                       <Form.Control
                         name='image'
@@ -116,7 +116,7 @@ class UpdatePost extends Component {
                         placeholder='image'
                         onChange={this.handleChange}
                       />
-                    </Form.Group>
+                    </Form.Group> */}
                     <br />
                     <div className='d-grid gap-2 col-6 mx-auto'>
                       <Button variant='btn btn-secondary' type='submit'>
