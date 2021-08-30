@@ -11,9 +11,6 @@ const Comment = (props) => (
         Comment : <br />
       <p>{props.text}</p>
     </li>
-    <li>
-      <Card.Link href={props.image}>Image Link</Card.Link>
-    </li>
     <Button
       variant='light'
       className='btn btn-outline-danger'
