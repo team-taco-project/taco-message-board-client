@@ -72,15 +72,6 @@ class CreateComment extends Component {
                         onChange={this.handleChange}
                       />
                     </Form.Group>
-                    {/* <Form.Group controlId='image'>
-                      <Form.Label>Image</Form.Label>
-                      <Form.Control
-                        name='image'
-                        value={image}
-                        placeholder='image'
-                        onChange={this.handleChange}
-                      />
-                    </Form.Group> */}
                     <br />
                     <Button variant='light' type='submit'>
                       Submit

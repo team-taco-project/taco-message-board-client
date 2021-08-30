@@ -52,7 +52,7 @@ class UpdateComment extends Component {
 
     render () {
       // destructuring comment state for later use
-      const { text, image } = this.state.comment
+      const { text } = this.state.comment
       // update comment form
       return (
         <>
@@ -66,15 +66,6 @@ class UpdateComment extends Component {
                     required
                     name='text'
                     value={text}
-                    onChange={this.handleChange}
-                  />
-                </Form.Group>
-                <Form.Group controlId='image'>
-                  <Form.Label>Image</Form.Label>
-                  <Form.Control
-                    name='image'
-                    value={image}
-                    placeholder='image'
                     onChange={this.handleChange}
                   />
                 </Form.Group>
