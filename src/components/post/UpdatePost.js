@@ -37,37 +37,37 @@ class UpdatePost extends Component {
       }))
   }
 
-        // handles state change for input
-        handleChange = (event) => {
-          const userInput = { [event.target.name]: event.target.value }
-          this.setState(currState => {
-            // "Spread" out current post state key/value pairs
-            return { post: { ...currState.post, ...userInput } }
-          })
-        }
+    // handles state change for input
+    handleChange = (event) => {
+      const userInput = { [event.target.name]: event.target.value }
+      this.setState(currState => {
+        // "Spread" out current post state key/value pairs
+        return { post: { ...currState.post, ...userInput } }
+      })
+    }
 
-        // updates post on click
-        onUpdatePost = (event) => {
-          // prevent page reload
-          event.preventDefault()
-          // destructuring props for later use
-          const { user, msgAlert, history, match } = this.props
-          // updatePost API call
-          updatePost(this.state.post, match.params.id, user)
-            .then(() => msgAlert({
-              heading: 'Post Updated!',
-              message: updatePostSuccess,
-              variant: 'success'
-            }))
-            .then(res => history.push('/posts-all'))
-            .catch(() => {
-              msgAlert({
-                heading: 'Post update failed :(',
-                message: updatePostFailure,
-                variant: 'danger'
-              })
-            })
-        }
+    // updates post on click
+    onUpdatePost = (event) => {
+      // prevent page reload
+      event.preventDefault()
+      // destructuring props for later use
+      const { user, msgAlert, history, match } = this.props
+      // updatePost API call
+      updatePost(this.state.post, match.params.id, user)
+        .then(() => msgAlert({
+          heading: 'Post Updated!',
+          message: updatePostSuccess,
+          variant: 'success'
+        }))
+        .then(res => history.push('/posts-all'))
+        .catch(() => {
+          msgAlert({
+            heading: 'Post update failed :(',
+            message: updatePostFailure,
+            variant: 'danger'
+          })
+        })
+    }
 
         render () {
           // destructuring state of post for later use
@@ -128,10 +128,13 @@ class UpdatePost extends Component {
                     </div>
                   </Form>
                 </div>
-              </div>
-            </>
-          )
-        }
+                <Link to={'/posts-all'} className="btn btn-primary">Cancel</Link>
+              </Form>
+            </div>
+          </div>
+        </>
+      )
+    }
 }
 
 export default withRouter(UpdatePost)

@@ -9,6 +9,7 @@ import Button from 'react-bootstrap/Button'
 import './auth.scss'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSignInAlt } from '@fortawesome/free-solid-svg-icons'
+
 // Create sign in class with state
 class SignIn extends Component {
   constructor (props) {
@@ -20,11 +21,11 @@ class SignIn extends Component {
     }
   }
 
-    // handles state change of input fields
-    handleChange = (event) =>
-      this.setState({
-        [event.target.name]: event.target.value
-      })
+  // handles state change of input fields
+  handleChange = (event) =>
+    this.setState({
+      [event.target.name]: event.target.value
+    })
 
     // handles sign in event
     onSignIn = (event) => {
