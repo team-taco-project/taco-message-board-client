@@ -69,59 +69,64 @@ class UpdatePost extends Component {
         })
     }
 
-    render () {
-      // destructuring state of post for later use
-      const { title, subject, content, image } = this.state.post
-      // update post form
-      return (
-        <>
-          <div className='row' id='showPost'>
-            <div className='col-sm-10 col-md-8 mx-auto mt-5'>
-              <h3 className='register'>Update Post</h3>
-              <Form onSubmit={this.onUpdatePost}>
-                <Form.Group controlId='title'>
-                  <Form.Label>Post Title :</Form.Label>
-                  <Form.Control
-                    required
-                    name='title'
-                    value={title}
-                    onChange={this.handleChange}
-                  />
-                </Form.Group>
-                <Form.Group controlId='subject'>
-                  <Form.Label>Subject :</Form.Label>
-                  <Form.Control
-                    required
-                    name='subject'
-                    value={subject}
-                    onChange={this.handleChange}
-                  />
-                </Form.Group>
-                <Form.Group controlId='content'>
-                  <Form.Label>Content :</Form.Label>
-                  <Form.Control
-                    required
-                    name='content'
-                    value={content}
-                    as='textarea'
-                    rows={4}
-                    onChange={this.handleChange}
-                  />
-                </Form.Group>
-                <Form.Group controlId='image'>
-                  <Form.Label>Image :</Form.Label>
-                  <Form.Control
-                    name='image'
-                    value={image}
-                    placeholder='image'
-                    onChange={this.handleChange}
-                  />
-                </Form.Group>
-                <br />
-                <div className='d-grid gap-2 col-6 mx-auto'>
-                  <Button variant='primary' type='submit'>
-                    Submit
-                  </Button>
+        render () {
+          // destructuring state of post for later use
+          const { title, subject, content } = this.state.post
+          // update post form
+          return (
+            <>
+              <div className='row' id='showPost'>
+                <div className='col-sm-10 col-md-8 mx-auto mt-5'>
+                  <h3 className='register'>Update Post</h3>
+                  <Form onSubmit={this.onUpdatePost}>
+                    <Form.Group controlId='title'>
+                      <Form.Label>Post Title :</Form.Label>
+                      <Form.Control
+                        required
+                        name='title'
+                        value={title}
+                        onChange={this.handleChange}
+                      />
+                    </Form.Group>
+                    <Form.Group controlId='subject'>
+                      <Form.Label>Subject :</Form.Label>
+                      <Form.Control
+                        required
+                        name='subject'
+                        value={subject}
+                        onChange={this.handleChange}
+                      />
+                    </Form.Group>
+                    <Form.Group controlId='content'>
+                      <Form.Label>Content :</Form.Label>
+                      <Form.Control
+                        required
+                        name='content'
+                        value={content}
+                        as='textarea'
+                        rows={4}
+                        onChange={this.handleChange}
+                      />
+                    </Form.Group>
+                    {/* <Form.Group controlId='image'>
+                      <Form.Label>Image :</Form.Label>
+                      <Form.Control
+                        name='image'
+                        value={image}
+                        placeholder='image'
+                        onChange={this.handleChange}
+                      />
+                    </Form.Group> */}
+                    <br />
+                    <div className='d-grid gap-2 col-6 mx-auto'>
+                      <Button variant='btn btn-secondary' type='submit'>
+                        Update
+                      </Button>
+                      <Link to={'/posts-all'} className='btn btn-outline-light'>
+                        Cancel
+                      </Link>
+                    </div>
+                  </Form>
                 </div>
                 <Link to={'/posts-all'} className="btn btn-primary">Cancel</Link>
               </Form>

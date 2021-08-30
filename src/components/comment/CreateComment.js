@@ -54,7 +54,7 @@ class CreateComment extends Component {
 
         render () {
           // destructuring state for later use
-          const { text, image } = this.state
+          const { text } = this.state
           // create comment form
           return (
             <>
@@ -72,7 +72,7 @@ class CreateComment extends Component {
                         onChange={this.handleChange}
                       />
                     </Form.Group>
-                    <Form.Group controlId='image'>
+                    {/* <Form.Group controlId='image'>
                       <Form.Label>Image</Form.Label>
                       <Form.Control
                         name='image'
@@ -80,7 +80,7 @@ class CreateComment extends Component {
                         placeholder='image'
                         onChange={this.handleChange}
                       />
-                    </Form.Group>
+                    </Form.Group> */}
                     <br />
                     <Button variant='light' type='submit'>
                       Submit
