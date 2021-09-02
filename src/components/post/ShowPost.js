@@ -22,7 +22,8 @@ class ShowPost extends Component {
         content: '',
         image: '',
         userEmail: '',
-        comments: []
+        comments: [],
+        owner: ''
       }
     }
   }
@@ -35,7 +36,9 @@ class ShowPost extends Component {
     showPost(match.params.id, user)
 
       // sets state of post
-      .then((res) => this.setState({ post: res.data.post }))
+      .then((res) => {
+        return this.setState({ post: res.data.post })
+      })
       // .then(() =>
       //   msgAlert({
       //     heading: 'Show post success',
@@ -123,12 +126,13 @@ class ShowPost extends Component {
                         />
                         <br />
                         {/* button to delete post */}
-                        <Button
-                          onClick={this.handleDeletePost}
-                          variant='danger'
-                          className='btn-primary'>
+                        { this.props.user._id === this.state.post.owner
+                          ? <Button
+                            onClick={this.handleDeletePost}
+                            variant='danger'>
                           Delete Post
-                        </Button>
+                          </Button>
+                          : '' }
                         {/* create comment */}
                         <div className='divider' />
                         <Link to={`/comments/${_id}`} class='btn btn-secondary'>
@@ -156,13 +160,15 @@ class ShowPost extends Component {
                         />
 
                         <br />
-                        {/* button to delete post */}
-                        <Button
-                          onClick={this.handleDeletePost}
-                          variant='danger'
-                          className='btn-primary'>
+                        { this.props.user._id === this.state.post.owner
+                          ? <Button
+                            onClick={this.handleDeletePost}
+                            variant='danger'>
                           Delete Post
-                        </Button>
+                          </Button>
+                          : '' }
+                        {/* button to delete post */}
+
                         {/* create comment */}
                         <div className='divider' />
                         <Link to={`/comments/${_id}`} class='btn btn-secondary'>
