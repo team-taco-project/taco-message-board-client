@@ -77,6 +77,7 @@ class IndexAllPosts extends React.Component {
                       Update Post
               </Link>
               : <p></p>}
+
           </Card.Body>
         </Card>
         <br />
