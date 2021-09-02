@@ -10,8 +10,6 @@ const Comment = (props) => (
         Comment : <br />
       <p>{props.text}</p>
     </li>
-    <li>
-    </li>
     <Button
       variant='light'
       className='btn btn-outline-danger'
