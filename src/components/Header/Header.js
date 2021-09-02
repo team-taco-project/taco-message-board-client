@@ -8,14 +8,17 @@ import './Header.scss'
 // options available for authenticated user
 const authenticatedOptions = (
   <Fragment>
+    <NavLink exact to='/posts-all' className='nav-link' id='text-bar'>
+        List of Posts
+    </NavLink>
     <NavLink to='/change-password' className='nav-link' id='text-bar'>
-                Change Password
+        Change Password
     </NavLink>
     {/* <NavLink to='/create-post' className='nav-link' id='text-bar'>
-                Create Post
-        </NavLink> */}
+                  Create Post
+          </NavLink> */}
     <NavLink to='/sign-out' className='nav-link' id='text-bar'>
-                Sign Out
+        Sign Out
     </NavLink>
   </Fragment>
 )
@@ -24,19 +27,17 @@ const unauthenticatedOptions = (
   <Fragment>
 
     <NavLink to='/sign-up' className='nav-link' id='text-bar'>
-          Sign Up
+            Sign Up
     </NavLink>
     <NavLink to='/sign-in' className='nav-link' id='text-bar'>
-          Sign In
+            Sign In
     </NavLink>
   </Fragment>
 )
 // options available regardless of authentication
 const alwaysOptions = (
   <Fragment>
-    <NavLink exact to='/posts-all' className='nav-link' id='text-bar'>
-        List of Posts
-    </NavLink>
+
   </Fragment>
 )
 
