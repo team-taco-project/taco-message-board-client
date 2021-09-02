@@ -1,6 +1,6 @@
 /* eslint-disable no-tabs */
 import React, { Component, Fragment } from 'react'
-import { Route, Link } from 'react-router-dom'
+import { Route } from 'react-router-dom'
 import { v4 as uuid } from 'uuid'
 import './App.scss'
 // import styled from 'styled-components'
@@ -56,12 +56,10 @@ class App extends Component {
     // displays header
     return (
       <Fragment>
-        <Link to='/posts-all'>
-          <img
-            src='https://i.imgur.com/tw8ziCS.png'
-            alt='Taco-message-board'
-            className='nameLogo'></img>
-        </Link>
+        <img
+          src='https://i.imgur.com/tw8ziCS.png'
+          alt='Taco-message-board'
+          className='nameLogo'></img>
         <Header user={user} />
         {msgAlerts.map((msgAlert) => (
           <AutoDismissAlert
@@ -88,9 +86,12 @@ class App extends Component {
               <SignIn msgAlert={this.msgAlert} setUser={this.setUser} />
             )}
           />
-          <Route
+          <AuthenticatedRoute
+            user={user}
             path='/posts-all'
-            render={() => <IndexAllPosts msgAlert={this.msgAlert} user={this.user} />}
+            render={() => (
+              <IndexAllPosts msgAlert={this.msgAlert} user={user} />
+            )}
           />
           {/* authenticated post routes */}
           <AuthenticatedRoute

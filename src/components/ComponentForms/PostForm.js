@@ -20,26 +20,16 @@ const Post = (props) => (
         <center>
           <h2 className='register'> {props.title}</h2>{' '}
         </center>
-        <h6>Subject : {props.subject}</h6>
-        <Card.Text>{props.content}</Card.Text>
-        <h5>Title</h5>
-        <Card.Title>{props.title}</Card.Title>
+        <h4>Subject : {props.subject}</h4>
+        <h6>Title : {props.title}</h6>
         <h6>User</h6>
         <Card.Subtitle className='mb-2 text-muted'>
           {props.userEmail}
         </Card.Subtitle>
-        <h6>Sub-Title</h6>
-        <Card.Subtitle className='mb-2 text-muted'>
-          {props.subject}
-        </Card.Subtitle>
         <h6>Content: </h6>
         <Card.Text>{props.content}</Card.Text>
         <h6>Image</h6>
-        <img
-          src={props.image}
-          style={styles.cardImage}
-          alt='No image'
-        />
+        <img src={props.image} style={styles.cardImage} alt='No image' />
         <Card.Text>
           {props.comments.map(({ id, text, image, _id }) => (
             // passing props to comment form component

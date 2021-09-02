@@ -19,6 +19,7 @@ class IndexAllPosts extends React.Component {
   componentDidMount () {
     const { user, msgAlert } = this.props
     // API call for index of all posts
+
     indexAllPosts(user)
       .then((response) =>
         this.setState({
@@ -26,13 +27,13 @@ class IndexAllPosts extends React.Component {
           loading: false
         })
       )
-      // .then(() =>
-      //   msgAlert({
-      //     heading: 'Index Success',
-      //     message: showIndexSuccess,
-      //     variant: 'success'
-      //   })
-      // )
+    // .then(() =>
+    //   msgAlert({
+    //     heading: 'Index Success',
+    //     message: showIndexSuccess,
+    //     variant: 'success'
+    //   })
+    // )
       .catch(() =>
         msgAlert({
           heading: 'Index Fail',
@@ -49,35 +50,39 @@ class IndexAllPosts extends React.Component {
       return 'loading...'
     }
     // variable to save array.map()
-    let postJsx
-    if (this.posts === null) {
+    if (this.post === null) {
       <h3>No post</h3>
-    } else {
-      // create list of posts
-      postJsx = this.state.post.map((post) => (
-        <li key={post._id}>
-          <Card className='box-post' style={{ width: '80%' }}>
-            <Card.Body className='bg-box'>
-              <Link className='link-title' to={`/post/${post._id}`}>
-                <Card.Title className='title-post'>{post.title}</Card.Title>
-              </Link>
-              <h6>created by: {post.userEmail} </h6>
+    }
 
-              <Card.Subtitle className='mb-2 text-muted'>
-                {post.subject}
-              </Card.Subtitle>
-              <Card.Text>{post.content}</Card.Text>
-              <Link
+    // create list of posts
+    const postJsx = this.state.post.map((post) => (
+      <li key={post._id}>
+        <Card className='box-post' style={{ width: '80%' }}>
+          <Card.Body className='bg-box'>
+            <Link className='link-title' to={`/post/${post._id}`}>
+              <Card.Title className='title-post'>{post.title}</Card.Title>
+            </Link>
+
+            <h6>created by: {post.userEmail} </h6>
+
+            <Card.Subtitle className='mb-2 text-muted'>
+              {post.subject}
+            </Card.Subtitle>
+            <Card.Text>{post.content}</Card.Text>
+
+            {this.props.user._id === post.owner
+              ? <Link
                 to={`/post/${post._id}/edit`}
                 className='btn btn-outline-secondary'>
-                    Update Post
+                      Update Post
               </Link>
-            </Card.Body>
-          </Card>
-          <br></br>
-        </li>
-      ))
-    }
+              : <p></p>}
+          </Card.Body>
+        </Card>
+        <br />
+      </li>
+    ))
+
     return (
       <div>
 
@@ -89,7 +94,7 @@ class IndexAllPosts extends React.Component {
             type='button'
             className='btn btn-secondary btn-lg'
             id='create-btn'>
-                      Create Post
+                        Create Post
           </button>
         </NavLink>
         <p>{this.state.loading && 'loading ...'}</p>
