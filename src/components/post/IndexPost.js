@@ -85,7 +85,6 @@ class IndexAllPosts extends React.Component {
 
     return (
       <div>
-
         <br />
         <h1 className='topic'>Share your thought ..</h1>
 
