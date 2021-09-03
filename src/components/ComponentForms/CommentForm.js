@@ -1,6 +1,5 @@
 import React from 'react'
 import Button from 'react-bootstrap/Button'
-import { Link } from 'react-router-dom'
 // creating a component comment that accepts props it will be passed
 
 const Comment = (props) => (
@@ -16,13 +15,6 @@ const Comment = (props) => (
       onClick={() => props.onClick(props._id)}>
         Delete
     </Button>
-    <div className='divider' />
-    <Link
-      to={`/comments/${props.postId}/${props._id}/`}
-      className='btn btn-outline-light'>
-        Update Comment
-      {/* <Button onClick={() => props.onClickUpdate(props._id)}>Update</Button> */}
-    </Link>
   </ul>
 )
 
